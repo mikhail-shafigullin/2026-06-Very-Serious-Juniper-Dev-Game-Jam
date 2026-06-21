@@ -1,2 +1,7 @@
 class_name ItemObject
-extends Resource;
+extends Resource
+
+var itemName: String
+var slotType: InventorySlot.InventorySlotType
+var columns: Array[SlotMachineColumn]
+var effects: Array[ItemEffect]
