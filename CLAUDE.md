@@ -1,28 +1,46 @@
 # CLAUDE.md — Project Code Style & Structure
 
+## Game Overview
+
+A turn-based RPG roguelike where all actions (attack, defense, effects) are driven by slot machines.
+
+**Combat:** player and enemy take turns spinning slot machines on their equipped items.  
+**Weapon:** 9-slot machine, 6 symbols (strawberry, star, chest, cherry, seven, blank). Each symbol = 1 damage (blank = 0). Matching 3+ identical symbols triggers multipliers (×3 up to ×100 jackpot). Each weapon may have bonus conditions (e.g. three stars → ×2).  
+**Armor** (body slot): same slot machine mechanic — armor generated lasts one turn.  
+**Inventory slots:** right hand, left hand, body, helmet.  
+**Rewards:** after each battle, choose one of three equipment items to add to inventory.
+
+---
+
 ## Folder Structure
 
 ```
-indie-park-game-jam-5/
-├── autoload/          # Global singletons (EventBus and other autoload nodes)
-├── dialogues/         # Dialogue files (.dialogue)
-├── levels/            # Level scenes and level-specific scripts
-│   └── mainScreen/    # Main screen scene and its scripts
-├── scenes/            # Reusable scenes
-│   ├── actors/        # Characters (Player, NPC, etc.)
-│   ├── staticObjects/ # Static environment objects
-│   └── usableObjects/ # Interactable objects
-├── src/               # Pure GDScript without scenes: abstractions, utilities
-│   └── abstracts/     # Base (abstract) classes
-└── assets/            # (not documented)
-└── addons/            # (not documented)
+202606-very-serious-juniper-dev-game-jam/
+├── autoload/                    # Global singletons (autoload nodes)
+│   ├── eventBus/                # EventBus singleton
+│   ├── saveSystem/              # SaveSystem singleton
+│   ├── sceneTransitionManager/  # SceneTransitionManager singleton (has .tscn)
+│   └── Global.gd                # Global autoload script
+├── components/                  # Reusable component scripts (no scene required)
+│   └── grabableComponent/       # GrabableComponent logic
+├── levels/                      # Level scenes
+│   └── BattleScene.tscn         # Battle level scene
+├── src/                         # Pure GDScript: data models, controllers, utilities
+│   ├── battle/                  # Battle system (BattleEvent, EnemyObject)
+│   ├── items/                   # Item data (ItemObject)
+│   ├── player/                  # Player logic (PlayerController, PlayerInventory)
+│   ├── slotMachine/             # Slot machine logic (SlotMachineController)
+│   └── GameCycle.gd             # Top-level game cycle controller
+└── assets/                      # (not documented)
+└── addons/                      # (not documented)
 ```
 
 **File placement rules:**
 - Scenes and their attached scripts live together in the same folder (`MyScene.tscn` + `MyScene.gd`)
-- Scripts without scenes (utilities, abstractions) go into `src/`
+- Scripts without scenes (data models, controllers, utilities) go into `src/`
+- Reusable component scripts (no scene) go into `components/`
 - Autoload singletons go only into `autoload/`
-- One level = one subfolder under `levels/`
+- One level = one scene file under `levels/`
 
 ---
 

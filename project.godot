@@ -1,7 +1,6 @@
 ; Engine configuration file.
 ; It's best edited using the editor UI and not directly,
 ; since the parameters that go here are not all obvious.
-;
 ; Format:
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
@@ -10,15 +9,21 @@ config_version=5
 
 [application]
 
-config/name="GamePrototype"
-run/main_scene="res://levels/Level2D.tscn"
+config/name="202606-VerySeriousJuniperDevGameJam"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-SceneTransitionManager="*res://autoload/sceneTransitionManager/SceneTransitionManager.tscn"
-SaveSystem="*res://autoload/saveSystem/SaveSystem.gd"
+SaveSystem="*uid://bty38hy42m4mh"
+EventBus="*uid://oj54oy6l1m8i"
+SceneTransitionManager="uid://c8q2rnbj4vp5x"
+Global="*uid://jbmryfsdnmy2"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [physics]
 

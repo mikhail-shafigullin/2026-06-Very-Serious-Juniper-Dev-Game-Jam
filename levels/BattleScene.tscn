@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://q3v0fp6dad1c"]
+
+[ext_resource type="Script" uid="uid://cr3d0x8i53tj8" path="res://src/GameCycle.gd" id="1_wxgqe"]
+
+[node name="BattleScene" type="Node2D" unique_id=1814848257]
+
+[node name="GameCycle" type="Node" parent="." unique_id=332865073]
+script = ExtResource("1_wxgqe")
