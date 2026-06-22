@@ -89,7 +89,8 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Control" type="Control" parent="HBoxContainer/RightPanel" unique_id=158425159]
+[node name="BattleScreen" type="Control" parent="HBoxContainer/RightPanel" unique_id=158425159]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,7 +98,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightPanel/Control" unique_id=511817680]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen" unique_id=511817680]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -105,11 +106,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerPanel" type="Control" parent="HBoxContainer/RightPanel/Control/VBoxContainer" unique_id=1215314050]
+[node name="PlayerPanel" type="Control" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer" unique_id=1215314050]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel" unique_id=1146525654]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel" unique_id=1146525654]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,131 +118,132 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer" unique_id=1576792429]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer" unique_id=1576792429]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HPLabel" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=392754587]
+[node name="HPLabel" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=392754587]
 layout_mode = 2
 text = "HP"
 
-[node name="InventoryLable" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=1647842663]
+[node name="InventoryLable" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=1647842663]
 layout_mode = 2
 text = "Inventory:"
 
-[node name="LeftHand" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=165156833]
+[node name="LeftHand" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=165156833]
 layout_mode = 2
 
-[node name="LeftHandLable" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/LeftHand" unique_id=598114857]
+[node name="LeftHandLable" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/LeftHand" unique_id=598114857]
 layout_mode = 2
 text = "Left Hand:"
 
-[node name="Button" type="Button" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/LeftHand" unique_id=201355614]
+[node name="Button" type="Button" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/LeftHand" unique_id=201355614]
 layout_mode = 2
 text = "use"
 
-[node name="RightHand" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=1348261288]
+[node name="RightHand" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=1348261288]
 layout_mode = 2
 
-[node name="LeftHandLable" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/RightHand" unique_id=1534974976]
+[node name="LeftHandLable" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/RightHand" unique_id=1534974976]
 layout_mode = 2
 text = "Right Hand:"
 
-[node name="Button" type="Button" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/RightHand" unique_id=1470215088]
+[node name="Button" type="Button" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/RightHand" unique_id=1470215088]
 layout_mode = 2
 text = "use"
 
-[node name="Body" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=1995155226]
+[node name="Body" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=1995155226]
 layout_mode = 2
 
-[node name="BodyLabel" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Body" unique_id=1514009620]
+[node name="BodyLabel" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Body" unique_id=1514009620]
 layout_mode = 2
 text = "Body:"
 
-[node name="Button" type="Button" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Body" unique_id=946230773]
+[node name="Button" type="Button" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Body" unique_id=946230773]
 layout_mode = 2
 text = "use"
 
-[node name="Head" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=1589211345]
+[node name="Head" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=1589211345]
 layout_mode = 2
 
-[node name="HeadLabel" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Head" unique_id=34808757]
+[node name="HeadLabel" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Head" unique_id=34808757]
 layout_mode = 2
 text = "Head:"
 
-[node name="Button" type="Button" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Head" unique_id=843761136]
+[node name="Button" type="Button" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Head" unique_id=843761136]
 layout_mode = 2
 text = "use"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer" unique_id=1089663307]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer" unique_id=1089663307]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2" unique_id=1816447662]
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2" unique_id=1816447662]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer" unique_id=997471533]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer" unique_id=997471533]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=288813844]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=288813844]
 layout_mode = 2
 
-[node name="TopSlot1" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1061386635]
+[node name="TopSlot1" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1061386635]
 layout_mode = 2
 text = "1"
 
-[node name="TopSlot2" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1603959230]
+[node name="TopSlot2" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1603959230]
 layout_mode = 2
 text = "2"
 
-[node name="TopSlot3" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1601833288]
+[node name="TopSlot3" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1601833288]
 layout_mode = 2
 text = "3"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=1603917892]
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=1603917892]
 layout_mode = 2
 
-[node name="MiddleSlot1" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=1579769493]
+[node name="MiddleSlot1" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=1579769493]
 layout_mode = 2
 text = "4"
 
-[node name="MiddleSlot2" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=1586435792]
+[node name="MiddleSlot2" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=1586435792]
 layout_mode = 2
 text = "5"
 
-[node name="MiddleSlot3" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=651410920]
+[node name="MiddleSlot3" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=651410920]
 layout_mode = 2
 text = "6"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=1550241050]
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=1550241050]
 layout_mode = 2
 
-[node name="BottomSlot1" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer3" unique_id=255085796]
+[node name="BottomSlot1" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer3" unique_id=255085796]
 layout_mode = 2
 text = "7"
 
-[node name="BottomSlot2" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer3" unique_id=512242864]
+[node name="BottomSlot2" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer3" unique_id=512242864]
 layout_mode = 2
 text = "8"
 
-[node name="BottomSlot3" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer3" unique_id=1363812241]
+[node name="BottomSlot3" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer3" unique_id=1363812241]
 layout_mode = 2
 text = "9"
 
-[node name="Control" type="Control" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=1941677959]
+[node name="Control" type="Control" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=1941677959]
 layout_mode = 2
 
-[node name="FinalAmount" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/Control" unique_id=1573314526]
+[node name="FinalAmount" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/Control" unique_id=1573314526]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="EnemyPanel" type="Control" parent="HBoxContainer/RightPanel/Control/VBoxContainer" unique_id=1070641338]
+[node name="EnemyPanel" type="Control" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer" unique_id=1070641338]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel" unique_id=367416324]
+[node name="BattleInfo" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel" unique_id=367416324]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -249,92 +251,144 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer" unique_id=546959537]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo" unique_id=546959537]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="EnemyHPLabel" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer" unique_id=1548823918]
+[node name="EnemyHPLabel" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer" unique_id=1548823918]
 layout_mode = 2
 text = "HP"
 
-[node name="InventoryLable" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer" unique_id=933288126]
+[node name="InventoryLable" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer" unique_id=933288126]
 layout_mode = 2
 text = "Inventory:"
 
-[node name="NextAttack" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer" unique_id=56515851]
+[node name="NextAttack" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer" unique_id=56515851]
 layout_mode = 2
 
-[node name="LeftHandLable" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer/NextAttack" unique_id=2022752807]
+[node name="LeftHandLable" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer/NextAttack" unique_id=2022752807]
 layout_mode = 2
 text = "Left Hand:"
 
-[node name="Button" type="Button" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer/NextAttack" unique_id=545232188]
+[node name="Button" type="Button" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer/NextAttack" unique_id=545232188]
 layout_mode = 2
 text = "use"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer" unique_id=1393261198]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo" unique_id=1393261198]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2" unique_id=788508195]
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer2" unique_id=788508195]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer" unique_id=1413457243]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer2/CenterContainer" unique_id=1413457243]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=1199682451]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=1199682451]
 layout_mode = 2
 
-[node name="TopSlot1" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1276137841]
+[node name="TopSlot1" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1276137841]
 layout_mode = 2
 text = "1"
 
-[node name="TopSlot2" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer" unique_id=752637339]
+[node name="TopSlot2" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer" unique_id=752637339]
 layout_mode = 2
 text = "2"
 
-[node name="TopSlot3" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer" unique_id=433422895]
+[node name="TopSlot3" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer" unique_id=433422895]
 layout_mode = 2
 text = "3"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=1240245127]
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=1240245127]
 layout_mode = 2
 
-[node name="MiddleSlot1" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=902856392]
+[node name="MiddleSlot1" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=902856392]
 layout_mode = 2
 text = "4"
 
-[node name="MiddleSlot2" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=2035120477]
+[node name="MiddleSlot2" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=2035120477]
 layout_mode = 2
 text = "5"
 
-[node name="MiddleSlot3" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=1378160081]
+[node name="MiddleSlot3" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=1378160081]
 layout_mode = 2
 text = "6"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=601943881]
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=601943881]
 layout_mode = 2
 
-[node name="BottomSlot1" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer3" unique_id=2076711192]
+[node name="BottomSlot1" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer3" unique_id=2076711192]
 layout_mode = 2
 text = "7"
 
-[node name="BottomSlot2" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer3" unique_id=1674981241]
+[node name="BottomSlot2" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer3" unique_id=1674981241]
 layout_mode = 2
 text = "8"
 
-[node name="BottomSlot3" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer3" unique_id=607398776]
+[node name="BottomSlot3" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer3" unique_id=607398776]
 layout_mode = 2
 text = "9"
 
-[node name="Control" type="Control" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=1832447161]
+[node name="Control" type="Control" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=1832447161]
 layout_mode = 2
 
-[node name="FinalAmount" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/Control" unique_id=2026818697]
+[node name="FinalAmount" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/BattleInfo/VBoxContainer2/CenterContainer/VBoxContainer/Control" unique_id=2026818697]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Node" type="Node" parent="." unique_id=1590431746]
+[node name="ClaimReward" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel" unique_id=1700131702]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/ClaimReward" unique_id=401301958]
+layout_mode = 2
+
+[node name="Item1" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/ClaimReward/VBoxContainer" unique_id=184194266]
+layout_mode = 2
+text = "Item1"
+
+[node name="Button" type="Button" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/ClaimReward/VBoxContainer" unique_id=1236468749]
+layout_mode = 2
+text = "Take
+"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/ClaimReward" unique_id=913468788]
+layout_mode = 2
+
+[node name="Item1" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/ClaimReward/VBoxContainer2" unique_id=1303860928]
+layout_mode = 2
+text = "Item2"
+
+[node name="Button" type="Button" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/ClaimReward/VBoxContainer2" unique_id=1079140551]
+layout_mode = 2
+text = "Take
+"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/ClaimReward" unique_id=1216262947]
+layout_mode = 2
+
+[node name="Item1" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/ClaimReward/VBoxContainer3" unique_id=1846247136]
+layout_mode = 2
+text = "Item3"
+
+[node name="Button" type="Button" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel/ClaimReward/VBoxContainer3" unique_id=208007361]
+layout_mode = 2
+text = "Take
+"
+
+[node name="LocationScreen" type="Control" parent="HBoxContainer/RightPanel" unique_id=1114519113]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameCycle" type="Node" parent="." unique_id=1590431746]
 script = ExtResource("2_bo5af")
