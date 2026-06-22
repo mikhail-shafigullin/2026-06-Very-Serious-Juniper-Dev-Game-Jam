@@ -1,0 +1,340 @@
+[gd_scene format=3 uid="uid://wj4tiy5s82v4"]
+
+[ext_resource type="Script" uid="uid://54dspua2orls" path="res://levels/DebugPanel.gd" id="1_sji0g"]
+[ext_resource type="Script" uid="uid://cr3d0x8i53tj8" path="res://src/GameCycle.gd" id="2_bo5af"]
+
+[node name="DebugPanel" type="Control" unique_id=1003002092]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sji0g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1667176055]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftPanel" type="Control" parent="HBoxContainer" unique_id=1080360217]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MapPanel" type="Control" parent="HBoxContainer/LeftPanel" unique_id=1161810811]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftPanel/MapPanel" unique_id=306839594]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="location1Button" type="Button" parent="HBoxContainer/LeftPanel/MapPanel/VBoxContainer" unique_id=1619031385]
+layout_mode = 2
+text = "Init Location 1"
+
+[node name="battle1Button" type="Button" parent="HBoxContainer/LeftPanel/MapPanel/VBoxContainer" unique_id=1871399761]
+layout_mode = 2
+text = "Init Battle 1"
+
+[node name="reward1Button" type="Button" parent="HBoxContainer/LeftPanel/MapPanel/VBoxContainer" unique_id=1291213215]
+layout_mode = 2
+text = "Claim Reward 1"
+
+[node name="location2Button" type="Button" parent="HBoxContainer/LeftPanel/MapPanel/VBoxContainer" unique_id=1498697299]
+layout_mode = 2
+text = "Init Location 2"
+
+[node name="battle2Button" type="Button" parent="HBoxContainer/LeftPanel/MapPanel/VBoxContainer" unique_id=452470316]
+layout_mode = 2
+text = "Init Battle 2"
+
+[node name="reward2Button" type="Button" parent="HBoxContainer/LeftPanel/MapPanel/VBoxContainer" unique_id=1999527223]
+layout_mode = 2
+text = "Claim Reward 1"
+
+[node name="location3Button" type="Button" parent="HBoxContainer/LeftPanel/MapPanel/VBoxContainer" unique_id=1453311778]
+layout_mode = 2
+text = "Init Location 3"
+
+[node name="battle3Button" type="Button" parent="HBoxContainer/LeftPanel/MapPanel/VBoxContainer" unique_id=1914328740]
+layout_mode = 2
+text = "Init Battle 3"
+
+[node name="gameOverButton" type="Button" parent="HBoxContainer/LeftPanel/MapPanel/VBoxContainer" unique_id=131392041]
+layout_mode = 2
+text = "Game Over
+"
+
+[node name="BattlePanel" type="Control" parent="HBoxContainer/LeftPanel" unique_id=71249207]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RightPanel" type="Control" parent="HBoxContainer" unique_id=2132922055]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="HBoxContainer/RightPanel" unique_id=158425159]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightPanel/Control" unique_id=511817680]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerPanel" type="Control" parent="HBoxContainer/RightPanel/Control/VBoxContainer" unique_id=1215314050]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel" unique_id=1146525654]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer" unique_id=1576792429]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HPLabel" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=392754587]
+layout_mode = 2
+text = "HP"
+
+[node name="InventoryLable" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=1647842663]
+layout_mode = 2
+text = "Inventory:"
+
+[node name="LeftHand" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=165156833]
+layout_mode = 2
+
+[node name="LeftHandLable" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/LeftHand" unique_id=598114857]
+layout_mode = 2
+text = "Left Hand:"
+
+[node name="Button" type="Button" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/LeftHand" unique_id=201355614]
+layout_mode = 2
+text = "use"
+
+[node name="RightHand" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=1348261288]
+layout_mode = 2
+
+[node name="LeftHandLable" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/RightHand" unique_id=1534974976]
+layout_mode = 2
+text = "Right Hand:"
+
+[node name="Button" type="Button" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/RightHand" unique_id=1470215088]
+layout_mode = 2
+text = "use"
+
+[node name="Body" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=1995155226]
+layout_mode = 2
+
+[node name="BodyLabel" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Body" unique_id=1514009620]
+layout_mode = 2
+text = "Body:"
+
+[node name="Button" type="Button" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Body" unique_id=946230773]
+layout_mode = 2
+text = "use"
+
+[node name="Head" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=1589211345]
+layout_mode = 2
+
+[node name="HeadLabel" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Head" unique_id=34808757]
+layout_mode = 2
+text = "Head:"
+
+[node name="Button" type="Button" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Head" unique_id=843761136]
+layout_mode = 2
+text = "use"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer" unique_id=1089663307]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2" unique_id=1816447662]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer" unique_id=997471533]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=288813844]
+layout_mode = 2
+
+[node name="TopSlot1" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1061386635]
+layout_mode = 2
+text = "1"
+
+[node name="TopSlot2" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1603959230]
+layout_mode = 2
+text = "2"
+
+[node name="TopSlot3" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1601833288]
+layout_mode = 2
+text = "3"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=1603917892]
+layout_mode = 2
+
+[node name="MiddleSlot1" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=1579769493]
+layout_mode = 2
+text = "4"
+
+[node name="MiddleSlot2" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=1586435792]
+layout_mode = 2
+text = "5"
+
+[node name="MiddleSlot3" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=651410920]
+layout_mode = 2
+text = "6"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=1550241050]
+layout_mode = 2
+
+[node name="BottomSlot1" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer3" unique_id=255085796]
+layout_mode = 2
+text = "7"
+
+[node name="BottomSlot2" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer3" unique_id=512242864]
+layout_mode = 2
+text = "8"
+
+[node name="BottomSlot3" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer3" unique_id=1363812241]
+layout_mode = 2
+text = "9"
+
+[node name="Control" type="Control" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=1941677959]
+layout_mode = 2
+
+[node name="FinalAmount" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/Control" unique_id=1573314526]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="EnemyPanel" type="Control" parent="HBoxContainer/RightPanel/Control/VBoxContainer" unique_id=1070641338]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel" unique_id=367416324]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer" unique_id=546959537]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnemyHPLabel" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer" unique_id=1548823918]
+layout_mode = 2
+text = "HP"
+
+[node name="InventoryLable" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer" unique_id=933288126]
+layout_mode = 2
+text = "Inventory:"
+
+[node name="NextAttack" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer" unique_id=56515851]
+layout_mode = 2
+
+[node name="LeftHandLable" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer/NextAttack" unique_id=2022752807]
+layout_mode = 2
+text = "Left Hand:"
+
+[node name="Button" type="Button" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer/NextAttack" unique_id=545232188]
+layout_mode = 2
+text = "use"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer" unique_id=1393261198]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2" unique_id=788508195]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer" unique_id=1413457243]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=1199682451]
+layout_mode = 2
+
+[node name="TopSlot1" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1276137841]
+layout_mode = 2
+text = "1"
+
+[node name="TopSlot2" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer" unique_id=752637339]
+layout_mode = 2
+text = "2"
+
+[node name="TopSlot3" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer" unique_id=433422895]
+layout_mode = 2
+text = "3"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=1240245127]
+layout_mode = 2
+
+[node name="MiddleSlot1" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=902856392]
+layout_mode = 2
+text = "4"
+
+[node name="MiddleSlot2" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=2035120477]
+layout_mode = 2
+text = "5"
+
+[node name="MiddleSlot3" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=1378160081]
+layout_mode = 2
+text = "6"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=601943881]
+layout_mode = 2
+
+[node name="BottomSlot1" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer3" unique_id=2076711192]
+layout_mode = 2
+text = "7"
+
+[node name="BottomSlot2" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer3" unique_id=1674981241]
+layout_mode = 2
+text = "8"
+
+[node name="BottomSlot3" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/HBoxContainer3" unique_id=607398776]
+layout_mode = 2
+text = "9"
+
+[node name="Control" type="Control" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer" unique_id=1832447161]
+layout_mode = 2
+
+[node name="FinalAmount" type="Label" parent="HBoxContainer/RightPanel/Control/VBoxContainer/EnemyPanel/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/Control" unique_id=2026818697]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Node" type="Node" parent="." unique_id=1590431746]
+script = ExtResource("2_bo5af")
