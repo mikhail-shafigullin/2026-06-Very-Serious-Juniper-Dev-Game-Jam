@@ -17,21 +17,27 @@ func initGame() -> void:
 func initLocation() -> void:
 	pass;
 
+func startLocation() -> void:
+	EventBus.location_started.emit();
+
 func initBattle() -> void:
 	battle = BattleCycle.new();
 	pass;
 
 func startBattle() -> void:
-	battle.startBattle();
-	pass;
+	battle.startBattle()
+	EventBus.battle_started.emit()
 
 func finishBattle() -> void:
-	pass;
+	EventBus.battle_finished.emit()
+
+func finishLocation() -> void:
+	EventBus.location_finished.emit();
 
 func showResults() -> void:
 	pass;
 
-func claimRewards() -> void:
+func claimRewards(_item_index: int) -> void:
 	pass;
 
 func showGameOver() -> void:
