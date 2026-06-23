@@ -106,7 +106,6 @@ mouse_filter = 2
 
 [node name="BattleScreen" type="Control" parent="HBoxContainer/RightPanel" unique_id=158425159]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -160,6 +159,11 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "use"
 
+[node name="LeftHandCooldown" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/LeftHand" unique_id=443299631]
+unique_name_in_owner = true
+layout_mode = 2
+text = "CD"
+
 [node name="RightHand" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=1348261288]
 layout_mode = 2
 
@@ -171,6 +175,11 @@ text = "Right Hand:"
 unique_name_in_owner = true
 layout_mode = 2
 text = "use"
+
+[node name="RightHandCooldown" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/RightHand" unique_id=1283967592]
+unique_name_in_owner = true
+layout_mode = 2
+text = "CD"
 
 [node name="Body" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=1995155226]
 layout_mode = 2
@@ -184,6 +193,11 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "use"
 
+[node name="BodyCooldown" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Body" unique_id=950592359]
+unique_name_in_owner = true
+layout_mode = 2
+text = "CD"
+
 [node name="Head" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=1589211345]
 layout_mode = 2
 
@@ -195,6 +209,36 @@ text = "Head:"
 unique_name_in_owner = true
 layout_mode = 2
 text = "use"
+
+[node name="HeadCooldown" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Head" unique_id=1217272940]
+unique_name_in_owner = true
+layout_mode = 2
+text = "CD"
+
+[node name="Legs" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=1580652200]
+layout_mode = 2
+
+[node name="LegsLabel" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Legs" unique_id=1283277310]
+layout_mode = 2
+text = "Legs:"
+
+[node name="LegsUseButton" type="Button" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Legs" unique_id=941985196]
+unique_name_in_owner = true
+layout_mode = 2
+text = "use"
+
+[node name="LegsCooldown" type="Label" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Legs" unique_id=1418341812]
+unique_name_in_owner = true
+layout_mode = 2
+text = "CD"
+
+[node name="SkipTurn" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer" unique_id=1556197681]
+layout_mode = 2
+
+[node name="SkipTurnButton" type="Button" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/SkipTurn" unique_id=325426574]
+unique_name_in_owner = true
+layout_mode = 2
+text = "SkipTurn"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer" unique_id=1089663307]
 layout_mode = 2

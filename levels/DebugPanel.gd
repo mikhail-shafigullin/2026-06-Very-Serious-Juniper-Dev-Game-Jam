@@ -19,6 +19,13 @@ extends Control
 @onready var rightHandUseButton: Button = %RightHandUseButton
 @onready var bodyUseButton: Button = %BodyUseButton
 @onready var headUseButton: Button = %HeadUseButton
+@onready var legsUseButton: Button = %LegsUseButton
+@onready var skipTurnButton: Button = %SkipTurnButton
+@onready var leftHandCooldownLabel: Label = %LeftHandCooldown
+@onready var rightHandCooldownLabel: Label = %RightHandCooldown
+@onready var bodyCooldownLabel: Label = %BodyCooldown
+@onready var headCooldownLabel: Label = %HeadCooldown
+@onready var legsCooldownLabel: Label = %LegsCooldown
 @onready var playerTopSlot1: Label = %PlayerTopSlot1
 @onready var playerTopSlot2: Label = %PlayerTopSlot2
 @onready var playerTopSlot3: Label = %PlayerTopSlot3
@@ -73,6 +80,8 @@ func _connectButtons() -> void:
 	rightHandUseButton.pressed.connect(_onUseRightHand)
 	bodyUseButton.pressed.connect(_onUseBody)
 	headUseButton.pressed.connect(_onUseHead)
+	legsUseButton.pressed.connect(_onUseLegs)
+	skipTurnButton.pressed.connect(_onSkipTurn)
 
 func _connectSignals() -> void:
 	EventBus.player_hp_changed.connect(_onPlayerHpChanged)
@@ -93,29 +102,45 @@ func _setUseButtonsDisabled(disabled: bool) -> void:
 	bodyUseButton.disabled = disabled
 	headUseButton.disabled = disabled
 
-func _useSlotItem(item: ItemObject) -> void:
-	Global.gameCycle.battle.usePlayerItem(item)
-	Global.gameCycle.battle.finishPlayerTurn()
+func _updateCooldownLabels() -> void:
+	var inv := Global.gameCycle.player.inventory
+	leftHandCooldownLabel.text = str(inv.leftHand.currentCooldown)
+	rightHandCooldownLabel.text = str(inv.rightHand.currentCooldown)
+	bodyCooldownLabel.text = str(inv.body.currentCooldown)
+	headCooldownLabel.text = str(inv.head.currentCooldown)
+	legsCooldownLabel.text = str(inv.legs.currentCooldown)
+
+func _useSlotItem(slot: InventorySlot) -> void:
+	Global.gameCycle.battle.usePlayerItem(slot)
+	_updateCooldownLabels()
 
 func _onUseLeftHand() -> void:
-	var item := Global.gameCycle.player.inventory.leftHand.item
-	if item != null:
-		_useSlotItem(item)
+	var slot := Global.gameCycle.player.inventory.leftHand
+	if slot.item != null:
+		_useSlotItem(slot)
 
 func _onUseRightHand() -> void:
-	var item := Global.gameCycle.player.inventory.rightHand.item
-	if item != null:
-		_useSlotItem(item)
+	var slot := Global.gameCycle.player.inventory.rightHand
+	if slot.item != null:
+		_useSlotItem(slot)
 
 func _onUseBody() -> void:
-	var item := Global.gameCycle.player.inventory.body.item
-	if item != null:
-		_useSlotItem(item)
+	var slot := Global.gameCycle.player.inventory.body
+	if slot.item != null:
+		_useSlotItem(slot)
 
 func _onUseHead() -> void:
-	var item := Global.gameCycle.player.inventory.head.item
-	if item != null:
-		_useSlotItem(item)
+	var slot := Global.gameCycle.player.inventory.head
+	if slot.item != null:
+		_useSlotItem(slot)
+
+func _onUseLegs() -> void:
+	var slot := Global.gameCycle.player.inventory.legs
+	if slot.item != null:
+		_useSlotItem(slot)
+
+func _onSkipTurn() -> void:
+	Global.gameCycle.battle.finishPlayerTurn()
 
 func _initLocation() -> void:
 	Global.gameCycle.initLocation()
@@ -173,6 +198,7 @@ func _onBattleFinished() -> void:
 
 func _onPlayerTurnStarted() -> void:
 	_setUseButtonsDisabled(false)
+	_updateCooldownLabels()
 
 func _onEnemyTurnStarted() -> void:
 	_setUseButtonsDisabled(true)

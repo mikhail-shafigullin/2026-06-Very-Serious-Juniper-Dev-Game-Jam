@@ -19,13 +19,16 @@ func playerTurn() -> void:
 	playerTurnDamage = 0
 	EventBus.player_turn_started.emit()
 
-func usePlayerItem(item: ItemObject) -> void:
+func usePlayerItem(slot: InventorySlot) -> void:
 	if turnState != TurnState.PLAYER_TURN:
 		return
-	var controller := SlotMachineController.fromItem(item)
+	if slot.isOnCooldown():
+		return
+	var controller := SlotMachineController.fromItem(slot.item)
 	var result := controller.spin()
 	var damage := controller.calculateEffect(result)
 	playerTurnDamage += damage
+	slot.applyCooldown()
 	EventBus.player_slot_spun.emit(result)
 	EventBus.player_turn_result.emit(playerTurnDamage)
 
@@ -54,6 +57,7 @@ func finishEnemyTurn() -> void:
 	if player.currentHp <= 0:
 		finishBattle()
 	else:
+		player.inventory.tickAllCooldowns()
 		playerTurn()
 
 func finishBattle() -> void:
