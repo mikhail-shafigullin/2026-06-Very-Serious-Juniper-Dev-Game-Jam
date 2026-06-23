@@ -62,3 +62,10 @@ func getCombinations() -> Array[SlotMachineCombination]:
 		combinations.append(combo)
 
 	return combinations
+
+func getTotalMultiplier() -> float:
+	var total := 1.0
+	for combo: SlotMachineCombination in getCombinations():
+		if combo.slots[0].type != SlotObject.SlotType.BLANK:
+			total *= combo.getMultiplier()
+	return total

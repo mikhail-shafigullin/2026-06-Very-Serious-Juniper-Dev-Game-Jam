@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://54dspua2orls" path="res://levels/DebugPanel.gd" id="1_sji0g"]
 [ext_resource type="Script" uid="uid://cr3d0x8i53tj8" path="res://src/GameCycle.gd" id="2_bo5af"]
+[ext_resource type="Script" uid="uid://chj32ehpstodv" path="res://components/logs/EventLogger.gd" id="3_4aa8d"]
 
 [node name="DebugPanel" type="Control" unique_id=1003002092]
 layout_mode = 3
@@ -104,6 +105,7 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="BattleScreen" type="Control" parent="HBoxContainer/RightPanel" unique_id=158425159]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -153,7 +155,8 @@ layout_mode = 2
 layout_mode = 2
 text = "Left Hand:"
 
-[node name="Button" type="Button" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/LeftHand" unique_id=201355614]
+[node name="LeftHandUseButton" type="Button" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/LeftHand" unique_id=201355614]
+unique_name_in_owner = true
 layout_mode = 2
 text = "use"
 
@@ -164,7 +167,8 @@ layout_mode = 2
 layout_mode = 2
 text = "Right Hand:"
 
-[node name="Button" type="Button" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/RightHand" unique_id=1470215088]
+[node name="RightHandUseButton" type="Button" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/RightHand" unique_id=1470215088]
+unique_name_in_owner = true
 layout_mode = 2
 text = "use"
 
@@ -175,7 +179,8 @@ layout_mode = 2
 layout_mode = 2
 text = "Body:"
 
-[node name="Button" type="Button" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Body" unique_id=946230773]
+[node name="BodyUseButton" type="Button" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Body" unique_id=946230773]
+unique_name_in_owner = true
 layout_mode = 2
 text = "use"
 
@@ -186,7 +191,8 @@ layout_mode = 2
 layout_mode = 2
 text = "Head:"
 
-[node name="Button" type="Button" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Head" unique_id=843761136]
+[node name="HeadUseButton" type="Button" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/PlayerPanel/HBoxContainer/VBoxContainer/Head" unique_id=843761136]
+unique_name_in_owner = true
 layout_mode = 2
 text = "use"
 
@@ -269,7 +275,6 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="BattleInfo" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel" unique_id=367416324]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -376,6 +381,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="ClaimReward" type="HBoxContainer" parent="HBoxContainer/RightPanel/BattleScreen/VBoxContainer/EnemyPanel" unique_id=1700131702]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -436,3 +442,6 @@ mouse_filter = 2
 
 [node name="GameCycle" type="Node" parent="." unique_id=1590431746]
 script = ExtResource("2_bo5af")
+
+[node name="EventLogger" type="Node" parent="." unique_id=670778284]
+script = ExtResource("3_4aa8d")

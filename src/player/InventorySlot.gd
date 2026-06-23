@@ -1,7 +1,7 @@
 class_name InventorySlot
 extends Node
 
-enum InventorySlotType {HEAD, BODY, LEFT_HAND, RIGHT_HAND}
+enum InventorySlotType {HEAD, BODY, HAND}
 
 var type: InventorySlotType
 var item: ItemObject = null

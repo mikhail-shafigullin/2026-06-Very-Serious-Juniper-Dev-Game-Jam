@@ -15,14 +15,16 @@ func initGame() -> void:
 	player = PlayerController.new();
 
 func initLocation() -> void:
-	pass;
+	player.inventory.leftHand.item = SimpleHandWeapon.create()
 
 func startLocation() -> void:
 	EventBus.location_started.emit();
 
 func initBattle() -> void:
-	battle = BattleCycle.new();
-	pass;
+	battle = BattleCycle.new()
+	var event := BattleEvent.new()
+	event.enemy = SimpleEnemy.create()
+	battle.currentBattle = event
 
 func startBattle() -> void:
 	battle.startBattle()
