@@ -1,8 +1,54 @@
 [gd_scene format=3 uid="uid://q3v0fp6dad1c"]
 
 [ext_resource type="Script" uid="uid://cr3d0x8i53tj8" path="res://src/GameCycle.gd" id="1_wxgqe"]
+[ext_resource type="Texture2D" uid="uid://1hf1xurjk35t" path="res://assets/props/monstr_1.png" id="2_i4p2b"]
+[ext_resource type="Texture2D" uid="uid://ct6d0c3kflwwl" path="res://assets/props/zheleznayaRamka.png" id="2_q0uje"]
+[ext_resource type="Texture2D" uid="uid://cillhg23spfrq" path="res://assets/props/mainSlou_samiuNiz.png" id="3_7kt44"]
+[ext_resource type="Texture2D" uid="uid://drgn7j34j2b0k" path="res://assets/props/portrait_gg.png" id="3_lhckf"]
+[ext_resource type="Texture2D" uid="uid://cnd8u7cusredf" path="res://assets/props/hp_bar.png" id="3_wk2re"]
+[ext_resource type="Texture2D" uid="uid://d1yy7jookug0i" path="res://assets/props/fon_1.png" id="4_7f4i3"]
+[ext_resource type="Texture2D" uid="uid://bjff8li8fw0o2" path="res://assets/props/slot_machin.png" id="6_1m43i"]
+[ext_resource type="PackedScene" uid="uid://dmle35p4b676f" path="res://scenes/Handle.tscn" id="9_400xu"]
+[ext_resource type="Texture2D" uid="uid://dc10yok8jqymv" path="res://assets/props/slotiGG_podShmotki.png" id="12_ds3bl"]
 
 [node name="BattleScene" type="Node2D" unique_id=1814848257]
 
+[node name="BG" type="Node2D" parent="." unique_id=966844523]
+
+[node name="MainSlouSamiuNiz" type="Sprite2D" parent="BG" unique_id=1665101727]
+position = Vector2(770, 540)
+texture = ExtResource("3_7kt44")
+
+[node name="PortraitGg" type="Sprite2D" parent="." unique_id=759538160]
+position = Vector2(552, 948)
+texture = ExtResource("3_lhckf")
+
+[node name="HpBar" type="Sprite2D" parent="." unique_id=955310568]
+position = Vector2(1083, 854)
+texture = ExtResource("3_wk2re")
+
+[node name="Fon1" type="Sprite2D" parent="." unique_id=2095042278]
+position = Vector2(961, 406)
+texture = ExtResource("4_7f4i3")
+
+[node name="ZheleznayaRamka" type="Sprite2D" parent="." unique_id=539880497]
+position = Vector2(770, 540)
+texture = ExtResource("2_q0uje")
+
+[node name="SlotMachin" type="Sprite2D" parent="." unique_id=1744148156]
+position = Vector2(764, 540)
+texture = ExtResource("6_1m43i")
+
+[node name="Monstr1" type="Sprite2D" parent="." unique_id=440115601]
+position = Vector2(969, 496)
+texture = ExtResource("2_i4p2b")
+
 [node name="GameCycle" type="Node" parent="." unique_id=332865073]
 script = ExtResource("1_wxgqe")
+
+[node name="Handle" parent="." unique_id=1520223739 instance=ExtResource("9_400xu")]
+position = Vector2(334, 14)
+
+[node name="SlotiGgPodShmotki" type="Sprite2D" parent="." unique_id=1149308023]
+position = Vector2(209, 539)
+texture = ExtResource("12_ds3bl")

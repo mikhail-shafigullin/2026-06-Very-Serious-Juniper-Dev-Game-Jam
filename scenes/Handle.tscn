@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dmle35p4b676f"]
+
+[ext_resource type="Texture2D" uid="uid://d3yo8wx4i117m" path="res://assets/props/ruchka_1.png" id="1_njwdw"]
+[ext_resource type="Texture2D" uid="uid://drnglii1qf8lc" path="res://assets/props/ruchka_2.png" id="2_atkpx"]
+[ext_resource type="Texture2D" uid="uid://lrnuf6pjnra5" path="res://assets/props/ruchka_3.png" id="3_uvdoo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ds3bl"]
+size = Vector2(36, 232)
+
+[node name="Handle" type="Node2D" unique_id=1520223739]
+
+[node name="Ruchka1" type="Sprite2D" parent="." unique_id=1247173243]
+position = Vector2(25, 123)
+texture = ExtResource("1_njwdw")
+
+[node name="Ruchka2" type="Sprite2D" parent="." unique_id=77232260]
+visible = false
+position = Vector2(25, 143)
+texture = ExtResource("2_atkpx")
+
+[node name="Ruchka3" type="Sprite2D" parent="." unique_id=1452823530]
+visible = false
+position = Vector2(25, 172)
+texture = ExtResource("3_uvdoo")
+
+[node name="Ruchka4" type="Sprite2D" parent="." unique_id=1477053738]
+visible = false
+position = Vector2(25, 258)
+texture = ExtResource("3_uvdoo")
+flip_v = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1906090821]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2085563102]
+position = Vector2(25, 125)
+shape = SubResource("RectangleShape2D_ds3bl")
