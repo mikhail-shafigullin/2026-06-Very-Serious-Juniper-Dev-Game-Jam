@@ -26,12 +26,10 @@ func calculateEffect(result: SlotMachineResult) -> int:
 	var value := 0
 	for column: Array in result.grid:
 		for slot: SlotObject in column:
-			if slot.type != SlotObject.SlotType.BLANK:
-				value += 1
+			value += 1
 
 	for combo: SlotMachineCombination in result.getCombinations():
-		if combo.symbol != SlotObject.SlotType.BLANK:
-			value = int(value * combo.getMultiplier())
+		value = int(value * combo.getMultiplier())
 
 	for effect: ItemEffect in activeEffects:
 		value = effect.apply(result, value)

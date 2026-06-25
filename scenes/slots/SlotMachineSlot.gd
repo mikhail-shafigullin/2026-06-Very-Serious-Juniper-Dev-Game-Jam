@@ -1,7 +1,7 @@
 class_name SlotMachineSlot
 extends Control
 
-@export var slotType: SlotObject.SlotType = SlotObject.SlotType.BLANK
+@export var slotType: SlotObject.SlotType = SlotObject.SlotType.CHERRY
 
 @onready var cherry: TextureRect = %Cherry
 @onready var chest: TextureRect = %Chest
