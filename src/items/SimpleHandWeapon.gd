@@ -10,12 +10,13 @@ static func create() -> ItemObject:
 
 	for i in range(3):
 		var column := SlotMachineColumn.new()
-		for slotType in allTypes:
-			var slot := SlotObject.new()
-			slot.type = slotType
-			column.possibleSlots.append(slot)
+		for j in range(3):
+			for slotType in allTypes:
+				var slot := SlotObject.new()
+				slot.type = slotType
+				column.possibleSlots.append(slot)
 		item.columns.append(column)
-
+		column.possibleSlots.shuffle()
 	item.effects.append(WeaponDamageEffect.new())
 
 	return item

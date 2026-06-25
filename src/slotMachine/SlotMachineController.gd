@@ -15,6 +15,7 @@ static func fromItem(mainItem: ItemObject, extraEffects: Array[ItemEffect] = [])
 
 func spin() -> SlotMachineResult:
 	var result := SlotMachineResult.new()
+	result.controller = self
 	for column: SlotMachineColumn in columns:
 		var index := randi() % column.possibleSlots.size()
 		var columnResult := column.getSlotsAround(index)

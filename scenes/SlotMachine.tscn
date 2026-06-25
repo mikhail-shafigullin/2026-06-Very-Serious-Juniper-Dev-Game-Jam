@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bpss1kp054jo0"]
+
+[ext_resource type="PackedScene" uid="uid://dmle35p4b676f" path="res://scenes/Handle.tscn" id="1_b6tw1"]
+[ext_resource type="Script" uid="uid://brhmv8db2ndwj" path="res://scenes/SlotMachine.gd" id="1_gx68h"]
+[ext_resource type="Shader" uid="uid://yxobukbjsehw" path="res://src/shaders/slotmachine_speedline.gdshader" id="2_gx68h"]
+[ext_resource type="Texture2D" uid="uid://bjff8li8fw0o2" path="res://assets/props/slot_machin.png" id="3_fir66"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rx0hn"]
+noise_type = 0
+frequency = 0.0578
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rx0hn"]
+noise = SubResource("FastNoiseLite_rx0hn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rx0hn"]
+shader = ExtResource("2_gx68h")
+shader_parameter/noise = SubResource("NoiseTexture2D_rx0hn")
+shader_parameter/line_color_a = Color(1.3225842, 1.3709858e-05, 2.1458907e-06, 0.388)
+shader_parameter/line_color_b = Color(1, 0, 0, 0)
+shader_parameter/back_color = Color(0, 0, 0, 0.17254902)
+shader_parameter/line_threshold = 0.71999998390656
+shader_parameter/speed = 0.16999999620016
+shader_parameter/line_length = 100.0
+shader_parameter/angle = 0.0
+
+[sub_resource type="Gradient" id="Gradient_rx0hn"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l0tk0"]
+gradient = SubResource("Gradient_rx0hn")
+
+[node name="SlotMachine" type="Node2D" unique_id=277983810]
+script = ExtResource("1_gx68h")
+
+[node name="Handle" parent="." unique_id=1520223739 instance=ExtResource("1_b6tw1")]
+position = Vector2(334, 14)
+
+[node name="SlotMachineBox" type="Node2D" parent="." unique_id=1669601168]
+unique_name_in_owner = true
+
+[node name="RollEffect" type="Sprite2D" parent="SlotMachineBox" unique_id=1006843059]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_rx0hn")
+position = Vector2(190.64227, 171.46191)
+rotation = 1.5707964
+scale = Vector2(0.6932518, 253.3451)
+texture = SubResource("GradientTexture1D_l0tk0")
+
+[node name="SlotMachin" type="Sprite2D" parent="SlotMachineBox" unique_id=1761757920]
+position = Vector2(764, 540)
+texture = ExtResource("3_fir66")
+
+[node name="Control" type="Control" parent="." unique_id=4778735]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 65.0
+offset_top = 88.0
+offset_right = 312.0
+offset_bottom = 257.0
+
+[node name="Column1" type="VBoxContainer" parent="Control" unique_id=2035346891]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -1.0
+offset_right = 82.0
+offset_bottom = 3000.0
+
+[node name="Column2" type="VBoxContainer" parent="Control" unique_id=1609555366]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 80.0
+offset_right = 163.0
+offset_bottom = 3000.0
+
+[node name="Column3" type="VBoxContainer" parent="Control" unique_id=2065723282]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 162.0
+offset_right = 245.0
+offset_bottom = 3000.0
+
+[connection signal="handle_fully_pulled" from="Handle" to="." method="_on_handle_handle_fully_pulled"]
+[connection signal="handle_left_bottom" from="Handle" to="." method="_on_handle_handle_left_bottom"]
+[connection signal="roll_triggered" from="Handle" to="." method="_on_handle_roll_triggered"]

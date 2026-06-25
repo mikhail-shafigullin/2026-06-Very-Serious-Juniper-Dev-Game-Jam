@@ -7,6 +7,7 @@ var currentBattle: BattleEvent
 var turnState: TurnState = TurnState.IDLE
 var playerTurnDamage: int = 0
 var enemyTurnDamage: int = 0
+var chosenSlot: InventorySlot = null
 
 func startBattle() -> void:
 	var player := Global.gameCycle.player
@@ -17,13 +18,24 @@ func startBattle() -> void:
 func playerTurn() -> void:
 	turnState = TurnState.PLAYER_TURN
 	playerTurnDamage = 0
+	chosenSlot = null
 	EventBus.player_turn_started.emit()
 
-func usePlayerItem(slot: InventorySlot) -> void:
+func chooseWeapon(slot: InventorySlot) -> void:
 	if turnState != TurnState.PLAYER_TURN:
 		return
-	if slot.isOnCooldown():
+	chosenSlot = slot
+	EventBus.player_weapon_chosen.emit(slot)
+
+func usePlayerItem() -> void:
+	if turnState != TurnState.PLAYER_TURN:
 		return
+	if chosenSlot == null:
+		return
+	if chosenSlot.isOnCooldown():
+		return
+	var slot := chosenSlot
+	chosenSlot = null
 	var controller := SlotMachineController.fromItem(slot.item)
 	var result := controller.spin()
 	var damage := controller.calculateEffect(result)

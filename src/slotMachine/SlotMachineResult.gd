@@ -1,6 +1,7 @@
 class_name SlotMachineResult
 extends Node
 
+var controller: SlotMachineController = null
 var grid: Array[Array] = []
 var combinations: Array[SlotMachineCombination] = []
 

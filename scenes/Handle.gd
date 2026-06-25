@@ -15,6 +15,8 @@ const RETURN_STEP_INTERVAL = 0.03
 @onready var stepTimer: Timer = %StepTimer
 
 signal roll_triggered()
+signal handle_fully_pulled()
+signal handle_left_bottom()
 
 var currentState: int = 1
 var targetState: int = 1
@@ -82,10 +84,12 @@ func _onStepTimer() -> void:
 		currentState += 1
 		if currentState == 4 and isDragging:
 			reachedBottom = true
+			handle_fully_pulled.emit()
 	elif currentState > targetState:
 		currentState -= 1
 		if currentState < 4 and isDragging:
 			reachedBottom = false
+			handle_left_bottom.emit()
 	_updateVisuals()
 	if currentState == targetState:
 		stepTimer.stop()

@@ -76,16 +76,17 @@ func _connectButtons() -> void:
 	takeItem1Button.pressed.connect(func() -> void: Global.gameCycle.claimRewards(0))
 	takeItem2Button.pressed.connect(func() -> void: Global.gameCycle.claimRewards(1))
 	takeItem3Button.pressed.connect(func() -> void: Global.gameCycle.claimRewards(2))
-	leftHandUseButton.pressed.connect(_onUseLeftHand)
-	rightHandUseButton.pressed.connect(_onUseRightHand)
-	bodyUseButton.pressed.connect(_onUseBody)
-	headUseButton.pressed.connect(_onUseHead)
-	legsUseButton.pressed.connect(_onUseLegs)
+	leftHandUseButton.pressed.connect(_onChooseLeftHand)
+	rightHandUseButton.pressed.connect(_onChooseRightHand)
+	bodyUseButton.pressed.connect(_onChooseBody)
+	headUseButton.pressed.connect(_onChooseHead)
+	legsUseButton.pressed.connect(_onChooseLegs)
 	skipTurnButton.pressed.connect(_onSkipTurn)
 
 func _connectSignals() -> void:
 	EventBus.player_hp_changed.connect(_onPlayerHpChanged)
 	EventBus.enemy_hp_changed.connect(_onEnemyHpChanged)
+	EventBus.player_weapon_chosen.connect(_onPlayerWeaponChosen)
 	EventBus.player_slot_spun.connect(_onPlayerSlotSpun)
 	EventBus.enemy_slot_spun.connect(_onEnemySlotSpun)
 	EventBus.player_turn_result.connect(_onPlayerTurnResult)
@@ -110,34 +111,30 @@ func _updateCooldownLabels() -> void:
 	headCooldownLabel.text = str(inv.head.currentCooldown)
 	legsCooldownLabel.text = str(inv.legs.currentCooldown)
 
-func _useSlotItem(slot: InventorySlot) -> void:
-	Global.gameCycle.battle.usePlayerItem(slot)
-	_updateCooldownLabels()
-
-func _onUseLeftHand() -> void:
+func _onChooseLeftHand() -> void:
 	var slot := Global.gameCycle.player.inventory.leftHand
 	if slot.item != null:
-		_useSlotItem(slot)
+		Global.gameCycle.battle.chooseWeapon(slot)
 
-func _onUseRightHand() -> void:
+func _onChooseRightHand() -> void:
 	var slot := Global.gameCycle.player.inventory.rightHand
 	if slot.item != null:
-		_useSlotItem(slot)
+		Global.gameCycle.battle.chooseWeapon(slot)
 
-func _onUseBody() -> void:
+func _onChooseBody() -> void:
 	var slot := Global.gameCycle.player.inventory.body
 	if slot.item != null:
-		_useSlotItem(slot)
+		Global.gameCycle.battle.chooseWeapon(slot)
 
-func _onUseHead() -> void:
+func _onChooseHead() -> void:
 	var slot := Global.gameCycle.player.inventory.head
 	if slot.item != null:
-		_useSlotItem(slot)
+		Global.gameCycle.battle.chooseWeapon(slot)
 
-func _onUseLegs() -> void:
+func _onChooseLegs() -> void:
 	var slot := Global.gameCycle.player.inventory.legs
 	if slot.item != null:
-		_useSlotItem(slot)
+		Global.gameCycle.battle.chooseWeapon(slot)
 
 func _onSkipTurn() -> void:
 	Global.gameCycle.battle.finishPlayerTurn()
@@ -155,7 +152,11 @@ func _onPlayerHpChanged(current_hp: int, max_hp: int) -> void:
 func _onEnemyHpChanged(current_hp: int, max_hp: int) -> void:
 	enemyHPLabel.text = "HP: %d / %d" % [current_hp, max_hp]
 
+func _onPlayerWeaponChosen(_slot: InventorySlot) -> void:
+	pass
+
 func _onPlayerSlotSpun(result: SlotMachineResult) -> void:
+	_updateCooldownLabels()
 	var labels := [
 		playerTopSlot1, playerTopSlot2, playerTopSlot3,
 		playerMiddleSlot1, playerMiddleSlot2, playerMiddleSlot3,

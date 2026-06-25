@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://cq2yhwauh8abg"]
+
+[ext_resource type="Theme" uid="uid://16pty85j0cwk" path="res://assets/themes/InventoryTheme.tres" id="1_5d712"]
+[ext_resource type="Texture2D" uid="uid://dc10yok8jqymv" path="res://assets/props/slotiGG_podShmotki.png" id="2_7f7tj"]
+[ext_resource type="Script" uid="uid://ccgjgdtp621oh" path="res://scenes/Inventory.gd" id="2_q3t5a"]
+[ext_resource type="ButtonGroup" uid="uid://bbp2f5wsy5xhg" path="res://assets/themes/InventoryButtonGroup.tres" id="3_7f7tj"]
+[ext_resource type="Texture2D" uid="uid://dqfxj6in0xw5f" path="res://assets/props/shlem_common.png" id="3_q3t5a"]
+[ext_resource type="Texture2D" uid="uid://c0b6rh7m1yvf0" path="res://assets/props/sword_common.png" id="4_yj0ni"]
+[ext_resource type="Texture2D" uid="uid://dee3ast4327ta" path="res://assets/props/dospeh_common.png" id="5_cexoc"]
+[ext_resource type="Texture2D" uid="uid://dxyqxugngifpd" path="res://assets/props/boots_common.png" id="6_f0lgf"]
+
+[node name="Inventory" type="Control" unique_id=997599725]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 363.0
+offset_right = 384.0
+offset_bottom = 722.0
+mouse_filter = 2
+theme = ExtResource("1_5d712")
+script = ExtResource("2_q3t5a")
+
+[node name="SlotiGgPodShmotki" type="Sprite2D" parent="." unique_id=1146890700]
+position = Vector2(169, 176)
+texture = ExtResource("2_7f7tj")
+
+[node name="InventorySlotHead" type="Button" parent="." unique_id=1216390034]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 118.0
+offset_right = 223.0
+offset_bottom = 100.0
+toggle_mode = true
+button_group = ExtResource("3_7f7tj")
+icon = ExtResource("3_q3t5a")
+expand_icon = true
+
+[node name="InventorySlotLeftHand" type="Button" parent="." unique_id=62976790]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -7.0
+offset_top = 129.0
+offset_right = 98.0
+offset_bottom = 229.0
+toggle_mode = true
+button_group = ExtResource("3_7f7tj")
+icon = ExtResource("4_yj0ni")
+expand_icon = true
+
+[node name="InventorySlotRightHand" type="Button" parent="." unique_id=1632229044]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 237.0
+offset_top = 129.0
+offset_right = 342.0
+offset_bottom = 229.0
+theme_type_variation = &"FlatButton"
+toggle_mode = true
+button_group = ExtResource("3_7f7tj")
+icon = ExtResource("4_yj0ni")
+expand_icon = true
+
+[node name="InventorySlotBody" type="Button" parent="." unique_id=1883140558]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 116.0
+offset_top = 129.0
+offset_right = 221.0
+offset_bottom = 229.0
+toggle_mode = true
+button_group = ExtResource("3_7f7tj")
+icon = ExtResource("5_cexoc")
+expand_icon = true
+
+[node name="InventorySlotLegs" type="Button" parent="." unique_id=925935130]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 116.0
+offset_top = 255.0
+offset_right = 221.0
+offset_bottom = 355.0
+toggle_mode = true
+button_group = ExtResource("3_7f7tj")
+icon = ExtResource("6_f0lgf")
+expand_icon = true
