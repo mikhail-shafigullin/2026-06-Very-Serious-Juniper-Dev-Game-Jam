@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://q3v0fp6dad1c"]
 
+[ext_resource type="Script" uid="uid://dfqefip0yb6qo" path="res://levels/BattleScreen.gd" id="1_ds3bl"]
 [ext_resource type="Script" uid="uid://cr3d0x8i53tj8" path="res://src/GameCycle.gd" id="1_wxgqe"]
 [ext_resource type="Texture2D" uid="uid://1hf1xurjk35t" path="res://assets/props/monstr_1.png" id="2_i4p2b"]
 [ext_resource type="Texture2D" uid="uid://ct6d0c3kflwwl" path="res://assets/props/zheleznayaRamka.png" id="2_q0uje"]
@@ -9,9 +10,35 @@
 [ext_resource type="Texture2D" uid="uid://d1yy7jookug0i" path="res://assets/props/fon_1.png" id="4_7f4i3"]
 [ext_resource type="Texture2D" uid="uid://bjff8li8fw0o2" path="res://assets/props/slot_machin.png" id="6_1m43i"]
 [ext_resource type="PackedScene" uid="uid://dmle35p4b676f" path="res://scenes/Handle.tscn" id="9_400xu"]
+[ext_resource type="Shader" uid="uid://yxobukbjsehw" path="res://src/shaders/slotmachine_speedline.gdshader" id="9_rx0hn"]
+[ext_resource type="PackedScene" uid="uid://wj4tiy5s82v4" path="res://levels/DebugPanel.tscn" id="11_wk2re"]
 [ext_resource type="Texture2D" uid="uid://dc10yok8jqymv" path="res://assets/props/slotiGG_podShmotki.png" id="12_ds3bl"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rx0hn"]
+noise_type = 0
+frequency = 0.0578
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rx0hn"]
+noise = SubResource("FastNoiseLite_rx0hn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rx0hn"]
+shader = ExtResource("9_rx0hn")
+shader_parameter/noise = SubResource("NoiseTexture2D_rx0hn")
+shader_parameter/line_color_a = Color(1.3225842, 1.3709858e-05, 2.1458907e-06, 0.388)
+shader_parameter/line_color_b = Color(1, 0, 0, 0)
+shader_parameter/back_color = Color(0, 0, 0, 0.17254902)
+shader_parameter/line_threshold = 0.71999998390656
+shader_parameter/speed = 0.16999999620016
+shader_parameter/line_length = 100.0
+shader_parameter/angle = 0.0
+
+[sub_resource type="Gradient" id="Gradient_rx0hn"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l0tk0"]
+gradient = SubResource("Gradient_rx0hn")
+
 [node name="BattleScene" type="Node2D" unique_id=1814848257]
+script = ExtResource("1_ds3bl")
 
 [node name="BG" type="Node2D" parent="." unique_id=966844523]
 
@@ -35,9 +62,21 @@ texture = ExtResource("4_7f4i3")
 position = Vector2(770, 540)
 texture = ExtResource("2_q0uje")
 
-[node name="SlotMachin" type="Sprite2D" parent="." unique_id=1744148156]
+[node name="SlotMachine" type="Node2D" parent="." unique_id=1337675681]
+
+[node name="Sprite2D" type="Sprite2D" parent="SlotMachine" unique_id=1580583444]
+material = SubResource("ShaderMaterial_rx0hn")
+position = Vector2(190.64227, 171.46191)
+rotation = -1.5707964
+scale = Vector2(0.6932518, 253.3451)
+texture = SubResource("GradientTexture1D_l0tk0")
+
+[node name="SlotMachin" type="Sprite2D" parent="SlotMachine" unique_id=1744148156]
 position = Vector2(764, 540)
 texture = ExtResource("6_1m43i")
+
+[node name="Handle" parent="SlotMachine" unique_id=1520223739 instance=ExtResource("9_400xu")]
+position = Vector2(334, 14)
 
 [node name="Monstr1" type="Sprite2D" parent="." unique_id=440115601]
 position = Vector2(969, 496)
@@ -46,9 +85,18 @@ texture = ExtResource("2_i4p2b")
 [node name="GameCycle" type="Node" parent="." unique_id=332865073]
 script = ExtResource("1_wxgqe")
 
-[node name="Handle" parent="." unique_id=1520223739 instance=ExtResource("9_400xu")]
-position = Vector2(334, 14)
-
 [node name="SlotiGgPodShmotki" type="Sprite2D" parent="." unique_id=1149308023]
 position = Vector2(209, 539)
 texture = ExtResource("12_ds3bl")
+
+[node name="DebugPanel" parent="." unique_id=1003002092 instance=ExtResource("11_wk2re")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = 962.0
+offset_right = 1537.0
+offset_bottom = 570.0
+grow_vertical = 0
+
+[connection signal="roll_triggered" from="SlotMachine/Handle" to="." method="_on_handle_roll_triggered"]
