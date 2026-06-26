@@ -13,6 +13,7 @@ const ENEMY_SPRITE_MAP: Dictionary = {
 const ORBIT_RADIUS: float = 5.0
 const ORBIT_SPEED: float = 1.5
 
+@onready var enemyHealthBar: ProgressBar = %EnemyHealthBar
 @onready var enemySprite1: Sprite2D = %Monstr1
 @onready var enemySprite2: Sprite2D = %Monstr2
 @onready var enemySprite3: Sprite2D = %Monstr3
@@ -22,11 +23,14 @@ const ORBIT_SPEED: float = 1.5
 @onready var playerAttackEffect: AnimatedSprite2D = %PlayerAttackEffect;
 @onready var timer: Timer = %Timer;
 @onready var damageAnimLabel: Label = %DamageAnimLabel;
+@onready var healthLabel: Label = %HealthLabel;
 
 var _activeSprite: Sprite2D = null
 var _basePosition: Vector2 = Vector2.ZERO
 var _tween: Tween = null
 var _pendingDamage: int = 0
+var _pendingHpCurrent: int = 0
+var _pendingHpMax: int = 0
 var _battleFinished: bool = false
 
 func _ready() -> void:
@@ -38,6 +42,7 @@ func _ready() -> void:
 	EventBus.battle_started.connect(_on_battle_started)
 	EventBus.battle_finished.connect(_onBattleFinished)
 	EventBus.player_turn_result.connect(onPlayerAttack)
+	EventBus.enemy_hp_changed.connect(_onEnemyHpChanged)
 
 func _hideAllEnemies() -> void:
 	if _tween != null:
@@ -58,6 +63,9 @@ func _on_battle_started() -> void:
 	var enemy := Global.gameCycle.battle.currentBattle.enemy
 	var spriteIndex: int = ENEMY_SPRITE_MAP.get(enemy.enemyName, -1)
 	_showEnemy(spriteIndex)
+	enemyHealthBar.max_value = _pendingHpMax
+	enemyHealthBar.value = _pendingHpCurrent
+	enemyHealthBar.show()
 
 func _showEnemy(index: int) -> void:
 	match index:
@@ -85,8 +93,13 @@ func _startOrbitTween() -> void:
 func _setOrbitPosition(angle: float) -> void:
 	_activeSprite.position = _basePosition + Vector2(cos(angle), sin(angle)) * ORBIT_RADIUS
 
+func _onEnemyHpChanged(current: int, maxHp: int) -> void:
+	_pendingHpCurrent = current
+	_pendingHpMax = maxHp
+
 func _onBattleFinished() -> void:
 	_battleFinished = true
+	enemyHealthBar.hide()
 	if _tween != null:
 		_tween.kill()
 		_tween = null
@@ -103,6 +116,9 @@ func _onTimerTimeout() -> void:
 	tween.tween_callback(_triggerHitEffects)
 
 func _triggerHitEffects() -> void:
+	enemyHealthBar.max_value = _pendingHpMax
+	enemyHealthBar.value = _pendingHpCurrent
+	healthLabel.text = str(_pendingHpCurrent) + "/" + str(_pendingHpMax);
 	if _activeSprite != null:
 		var flashTween := create_tween()
 		flashTween.tween_property(_activeSprite, "modulate", Color.RED, 0.08)

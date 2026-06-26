@@ -30,7 +30,34 @@ texture = ExtResource("3_7kt44")
 position = Vector2(552, 948)
 texture = ExtResource("3_lhckf")
 
+[node name="PlayerHealthProgressBar" type="TextureProgressBar" parent="." unique_id=1863540127]
+unique_name_in_owner = true
+offset_left = 678.0
+offset_top = 832.0
+offset_right = 1477.0
+offset_bottom = 873.0
+texture_progress = ExtResource("3_wk2re")
+
+[node name="PlayerHealthLabel" type="Label" parent="PlayerHealthProgressBar" unique_id=237931315]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.75
+offset_top = -11.5
+offset_right = 162.75
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="HpBar" type="Sprite2D" parent="." unique_id=955310568]
+visible = false
 position = Vector2(1083, 854)
 texture = ExtResource("3_wk2re")
 

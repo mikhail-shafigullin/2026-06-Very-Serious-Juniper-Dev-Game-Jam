@@ -130,6 +130,28 @@ visible = false
 position = Vector2(440, 380)
 texture = ExtResource("6_8hqsg")
 
+[node name="EnemyHealthBar" type="ProgressBar" parent="." unique_id=345678901]
+unique_name_in_owner = true
+visible = false
+offset_left = 286.0
+offset_top = 148.0
+offset_right = 674.0
+offset_bottom = 165.99997
+rotation = 1.5707964
+value = 100.0
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="EnemyHealthBar" unique_id=377410616]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 4.0000153
+offset_top = 257.0
+offset_right = 240.00002
+offset_bottom = 324.0
+rotation = -1.5707964
+text = "10/10"
+horizontal_alignment = 2
+
 [node name="attack" type="Node2D" parent="." unique_id=233734919]
 position = Vector2(449, 322)
 
