@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c26e58qn4b1cr" path="res://scenes/EnemiesContainer.tscn" id="11_1o8jg"]
 [ext_resource type="PackedScene" uid="uid://cq2yhwauh8abg" path="res://scenes/Inventory.tscn" id="11_ds3bl"]
 [ext_resource type="PackedScene" uid="uid://wj4tiy5s82v4" path="res://levels/DebugPanel.tscn" id="11_wk2re"]
+[ext_resource type="Theme" uid="uid://16pty85j0cwk" path="res://assets/themes/InventoryTheme.tres" id="14_bnn7c"]
 
 [node name="BattleScene" type="Node2D" unique_id=1814848257]
 script = ExtResource("1_ds3bl")
@@ -74,6 +75,16 @@ offset_bottom = 811.0
 mouse_filter = 2
 color = Color(0.036973957, 0.012095033, 0.0054641007, 1)
 
+[node name="NextLocationButton" type="Button" parent="Screeen/Location" unique_id=864566058]
+unique_name_in_owner = true
+offset_left = 818.0
+offset_top = 720.0
+offset_right = 1054.0
+offset_bottom = 810.0
+theme = ExtResource("14_bnn7c")
+theme_override_font_sizes/font_size = 40
+text = "Go further"
+
 [node name="EnemiesContainer" parent="Screeen" unique_id=1931371329 instance=ExtResource("11_1o8jg")]
 position = Vector2(99, 26)
 
@@ -91,6 +102,7 @@ texture = ExtResource("2_q0uje")
 script = ExtResource("1_wxgqe")
 
 [node name="DebugPanel" parent="." unique_id=1003002092 instance=ExtResource("11_wk2re")]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -102,3 +114,5 @@ offset_bottom = 580.0
 grow_vertical = 0
 
 [node name="Inventory" parent="." unique_id=997599725 instance=ExtResource("11_ds3bl")]
+
+[connection signal="pressed" from="Screeen/Location/NextLocationButton" to="." method="_on_next_location_button_pressed"]

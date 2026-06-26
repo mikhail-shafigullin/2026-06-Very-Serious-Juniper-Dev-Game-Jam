@@ -14,4 +14,4 @@ static func create() -> EnemyObject:
 			column.possibleSlots.append(slot)
 		weapon.columns.append(column)
 
-	return EnemyObject.new("Woman", 1000, weapon)
+	return EnemyObject.new("Woman", 100, weapon)

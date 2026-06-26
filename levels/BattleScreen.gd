@@ -5,11 +5,18 @@ extends Node2D
 @onready var location3BG: Sprite2D = %Fon3
 @onready var location4BG: Sprite2D = %Fon4
 @onready var blackFadeIn: ColorRect = %BlackFadeIn;
+@onready var nextLocationButton: Button = %NextLocationButton;
 
 func _ready() -> void:
+	nextLocationButton.hide();
 	EventBus.location_started.connect(locationChange)
+	EventBus.battle_finished.connect(_battle_finished)
+	Global.gameCycle.initGame();
+	Global.gameCycle.initLocation();
+	Global.gameCycle.startLocation();
 
 func locationChange(location: LocationObject) -> void:
+	nextLocationButton.modulate.a = 0.0
 	var tween := create_tween()
 	tween.tween_property(blackFadeIn, "modulate:a", 1.0, 0.5)
 	await tween.finished
@@ -32,3 +39,15 @@ func _showBackground(type: LocationObject.LocationType) -> void:
 			location3BG.visible = true
 		LocationObject.LocationType.ALTAR:
 			location4BG.visible = true
+
+func _battle_finished() -> void:
+	await get_tree().create_timer(3.5).timeout
+	nextLocationButton.modulate.a = 0.0
+	nextLocationButton.show()
+	var tween := create_tween()
+	tween.tween_property(nextLocationButton, "modulate:a", 1.0, 0.5)
+
+
+func _on_next_location_button_pressed() -> void:
+	Global.gameCycle.startLocation()
+	pass # Replace with function body.
