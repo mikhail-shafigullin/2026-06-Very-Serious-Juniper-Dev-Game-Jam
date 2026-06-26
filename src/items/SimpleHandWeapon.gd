@@ -2,7 +2,8 @@ class_name SimpleHandWeapon
 
 static func create() -> ItemObject:
 	var item := ItemObject.new()
-	item.itemName = "Simple Hand Weapon"
+	item.itemName = "Dagger"
+	item.itemDescription = "Absolutely common dagger"
 	item.slotType = InventorySlot.InventorySlotType.HAND
 	item.cooldown = 1;
 

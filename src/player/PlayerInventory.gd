@@ -17,3 +17,10 @@ func _init() -> void:
 func tickAllCooldowns() -> void:
 	for slot: InventorySlot in [head, body, leftHand, rightHand, legs]:
 		slot.tickCooldown()
+
+func refresh():
+	if(head): head.currentCooldown = 0;
+	if(body): body.currentCooldown = 0;
+	if(leftHand): leftHand.currentCooldown = 0;
+	if(rightHand): rightHand.currentCooldown = 0;
+	if(legs): legs.currentCooldown = 0;

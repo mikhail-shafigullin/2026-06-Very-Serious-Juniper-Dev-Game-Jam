@@ -7,6 +7,8 @@ extends Control
 @onready var slotBody: Button = %InventorySlotBody
 @onready var slotLegs: Button = %InventorySlotLegs
 @onready var skipTurnButton: Button = %SkipTurnButton;
+@onready var weaponNameLabel: Label = %WeaponNameLabel;
+@onready var weaponNameDescription: Label = %WeaponNameDescription;
 
 func _ready() -> void:
 	slotHead.toggled.connect(func(toggled_on: bool) -> void: _onSlotToggled(toggled_on, Global.gameCycle.player.inventory.head))
@@ -29,6 +31,7 @@ func refresh() -> void:
 	_refreshSlot(slotRightHand, inv.rightHand)
 	_refreshSlot(slotBody, inv.body)
 	_refreshSlot(slotLegs, inv.legs)
+	clearDescription();
 
 func _refreshSlot(button: Button, slot: InventorySlot) -> void:
 	if slot.item == null:
@@ -44,12 +47,24 @@ func _onSlotToggled(toggled_on: bool, slot: InventorySlot) -> void:
 		return
 	if toggled_on:
 		Global.gameCycle.battle.chooseWeapon(slot)
+		writeDescription(slot)
 	else:
 		Global.gameCycle.battle.unchooseWeapon(slot)
+		clearDescription()
 
 func _onSkipTurnPressed():
 	skipTurnButton.disabled = true;
 	Global.gameCycle.battle.finishPlayerTurn()
+	pass;
+
+func writeDescription(slot: InventorySlot):
+	weaponNameLabel.text = slot.item.itemName;
+	weaponNameDescription.text = slot.item.itemDescription;
+	pass;
+
+func clearDescription():
+	weaponNameLabel.text = "";
+	weaponNameDescription.text = "";
 	pass;
 
 func disableUsedWeapon(_ignore):

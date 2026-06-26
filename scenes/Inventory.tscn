@@ -111,7 +111,8 @@ offset_top = 55.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="ItemDescription" unique_id=1939655280]
+[node name="WeaponNameLabel" type="Label" parent="ItemDescription" unique_id=1939655280]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -121,7 +122,8 @@ grow_horizontal = 2
 text = "Weapon name"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="ItemDescription" unique_id=1911199347]
+[node name="WeaponNameDescription" type="Label" parent="ItemDescription" unique_id=1911199347]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0

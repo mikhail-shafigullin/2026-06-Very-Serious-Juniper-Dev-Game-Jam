@@ -35,6 +35,7 @@ func startBattle() -> void:
 	EventBus.battle_started.emit()
 
 func finishBattle() -> void:
+	player.inventory.refresh();
 	EventBus.battle_finished.emit()
 
 func finishLocation() -> void:
