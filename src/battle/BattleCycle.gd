@@ -48,15 +48,14 @@ func usePlayerItem() -> void:
 	playerTurnDamage += damage
 	slot.applyCooldown()
 	EventBus.player_slot_spun.emit(result)
-	EventBus.player_turn_result.emit(playerTurnDamage)
-
-func finishPlayerTurn() -> void:
+	EventBus.player_turn_result.emit(damage)
 	currentBattle.enemy.takeDamage(playerTurnDamage)
 	EventBus.enemy_hp_changed.emit(currentBattle.enemy.currentHp, currentBattle.enemy.maxHp)
 	if not currentBattle.enemy.isAlive():
 		finishBattle()
-	else:
-		enemyTurn()
+
+func finishPlayerTurn() -> void:
+	enemyTurn()
 
 func enemyTurn() -> void:
 	turnState = TurnState.ENEMY_TURN

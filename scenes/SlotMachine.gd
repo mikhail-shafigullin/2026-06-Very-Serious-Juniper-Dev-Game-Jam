@@ -11,6 +11,7 @@ const SPIN_SLOT_COUNT = 30
 @onready var column1: VBoxContainer = %Column1
 @onready var column2: VBoxContainer = %Column2
 @onready var column3: VBoxContainer = %Column3
+@onready var scoreLabel: Label = %ScoreLabel;
 
 var shakeTween: Tween
 var rollTween: Tween
@@ -22,7 +23,7 @@ func _ready() -> void:
 	shakeOriginalPos = slotMachineBox.position
 	EventBus.player_weapon_chosen.connect(_on_player_weapon_chosen)
 	EventBus.player_slot_spun.connect(_on_player_slot_spun)
-	# EventBus.player_turn_result.connect(_on_player_turn_result)
+	EventBus.player_turn_result.connect(_on_player_turn_result)
 	EventBus.player_turn_started.connect(_on_player_turn_started)
 
 func setController(controller: SlotMachineController) -> void:
@@ -44,8 +45,12 @@ func _updateIsRollPossible() -> void:
 func _on_player_turn_started() -> void:
 	currentSlot = null
 	_updateIsRollPossible()
+	scoreLabel.text = str(0);
+	scoreLabel.hide();
 
 func _on_player_weapon_chosen(slot: InventorySlot) -> void:
+	scoreLabel.text = str(0);
+	scoreLabel.hide();
 	currentSlot = slot
 	if slot != null and slot.item != null:
 		setController(SlotMachineController.fromItem(slot.item))
@@ -94,8 +99,13 @@ func _on_player_slot_spun(result: SlotMachineResult) -> void:
 
 	rollTween.chain().tween_callback(func():
 		rollEffectSprite.hide()
+		scoreLabel.show();
 		_updateIsRollPossible()
 	)
+
+func _on_player_turn_result(total: int):
+	scoreLabel.text = str(total);
+	pass;
 
 func _startShake() -> void:
 	if shakeTween:

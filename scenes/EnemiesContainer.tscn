@@ -7,13 +7,96 @@
 [ext_resource type="Texture2D" uid="uid://ceppg2vtiyvax" path="res://assets/props/monstr_4.png" id="4_gg1kc"]
 [ext_resource type="Texture2D" uid="uid://rbemfsm2w2yv" path="res://assets/props/monstr_5.png" id="5_ju3kh"]
 [ext_resource type="Texture2D" uid="uid://d3fl4o0ywxexh" path="res://assets/props/monstr_6.png" id="6_8hqsg"]
+[ext_resource type="Texture2D" uid="uid://ymrqf7467k2i" path="res://assets/pixelboy/cut_medium.png" id="8_4umsk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gg1kc"]
+atlas = ExtResource("8_4umsk")
+region = Rect2(0, 0, 44, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ju3kh"]
+atlas = ExtResource("8_4umsk")
+region = Rect2(44, 0, 44, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hqsg"]
+atlas = ExtResource("8_4umsk")
+region = Rect2(88, 0, 44, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8bty"]
+atlas = ExtResource("8_4umsk")
+region = Rect2(132, 0, 44, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3geeu"]
+atlas = ExtResource("8_4umsk")
+region = Rect2(176, 0, 44, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dv66q"]
+atlas = ExtResource("8_4umsk")
+region = Rect2(220, 0, 44, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgsm8"]
+atlas = ExtResource("8_4umsk")
+region = Rect2(264, 0, 44, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3pie"]
+atlas = ExtResource("8_4umsk")
+region = Rect2(308, 0, 44, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7cxb"]
+atlas = ExtResource("8_4umsk")
+region = Rect2(352, 0, 44, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8yio"]
+atlas = ExtResource("8_4umsk")
+region = Rect2(396, 0, 44, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8c1t7"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gg1kc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ju3kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hqsg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8bty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3geeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dv66q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgsm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3pie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7cxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8yio")
+}],
+"loop": 1,
+"name": &"slash",
+"speed": 12.0
+}]
 
 [node name="EnemiesContainer" type="Node2D" unique_id=1931371329]
 script = ExtResource("1_8c1t7")
 
 [node name="Monstr1" type="Sprite2D" parent="." unique_id=612075424]
 unique_name_in_owner = true
-visible = false
 position = Vector2(451, 467)
 texture = ExtResource("1_08oji")
 
@@ -46,3 +129,38 @@ unique_name_in_owner = true
 visible = false
 position = Vector2(440, 380)
 texture = ExtResource("6_8hqsg")
+
+[node name="attack" type="Node2D" parent="." unique_id=233734919]
+position = Vector2(449, 322)
+
+[node name="PlayerAttackEffect" type="AnimatedSprite2D" parent="attack" unique_id=134011849]
+unique_name_in_owner = true
+modulate = Color(1, 0.6176296, 0.52662855, 1)
+texture_filter = 1
+position = Vector2(1, -1)
+scale = Vector2(4.5238104, 4.5238104)
+sprite_frames = SubResource("SpriteFrames_8c1t7")
+animation = &"idle"
+
+[node name="Timer" type="Timer" parent="attack" unique_id=815878770]
+unique_name_in_owner = true
+wait_time = 1.5999999999999999
+one_shot = true
+
+[node name="Control" type="Control" parent="attack" unique_id=474316351]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -8.0
+offset_top = -7.0
+offset_right = 32.0
+offset_bottom = 33.0
+
+[node name="DamageAnimLabel" type="Label" parent="attack/Control" unique_id=1698735139]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -19.0
+offset_top = -15.0
+offset_right = 71.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(1, 0.09019608, 0.019607844, 1)
+theme_override_font_sizes/font_size = 30

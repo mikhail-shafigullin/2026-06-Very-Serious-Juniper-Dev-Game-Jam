@@ -1,8 +1,8 @@
 class_name PlayerController
 extends Node;
 
-var maxHp: int = 1000
-var currentHp: int = 1000
+var maxHp: int = 200
+var currentHp: int = 200
 var inventory: PlayerInventory
 
 func _init() -> void:
