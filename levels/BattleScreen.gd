@@ -8,8 +8,14 @@ extends Node2D
 @onready var nextLocationButton: Button = %NextLocationButton;
 @onready var playerHealthProgressBar: TextureProgressBar = %PlayerHealthProgressBar;
 @onready var playerHealthLabel: Label = %PlayerHealthLabel;
+@onready var portraitSprite: Sprite2D = %PortraitGg;
+@onready var inventory: Control = %Inventory;
+@onready var slotMachine: Node2D = %SlotMachine;
+
+var rand: RandomNumberGenerator;
 
 func _ready() -> void:
+	rand = RandomNumberGenerator.new();
 	nextLocationButton.hide();
 	EventBus.location_started.connect(locationChange)
 	EventBus.battle_finished.connect(_battle_finished)
@@ -59,9 +65,24 @@ func _initPlayerHealthBar() -> void:
 	playerHealthLabel.text = "%d/%d" % [player.currentHp, player.maxHp]
 
 func _onPlayerHpChanged(currentHp: int, maxHp: int) -> void:
+	if(currentHp < playerHealthProgressBar.value):
+		_shake(portraitSprite)
+		_shake(playerHealthLabel)
+		_shake(slotMachine)
 	playerHealthProgressBar.max_value = maxHp
 	playerHealthProgressBar.value = currentHp
 	playerHealthLabel.text = "%d/%d" % [currentHp, maxHp]
+
+func _shake(node: CanvasItem) -> void:
+	var origin: Vector2 = node.position
+	var tween := create_tween()
+	var val:int = rand.randi_range(4, 12);
+	var valsm:int = val / 2;
+	tween.tween_property(node, "position", origin + Vector2(val, 0), 0.05)
+	tween.tween_property(node, "position", origin + Vector2(-val, 0), 0.05)
+	tween.tween_property(node, "position", origin + Vector2(valsm, 0), 0.04)
+	tween.tween_property(node, "position", origin + Vector2(-valsm, 0), 0.04)
+	tween.tween_property(node, "position", origin, 0.03)
 
 func _on_next_location_button_pressed() -> void:
 	Global.gameCycle.startLocation()

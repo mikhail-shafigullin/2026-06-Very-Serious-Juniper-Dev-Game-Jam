@@ -18,6 +18,7 @@ func _ready() -> void:
 
 	EventBus.battle_started.connect(refresh)
 	EventBus.player_turn_started.connect(refresh)
+	EventBus.player_slot_spun.connect(disableUsedWeapon)
 
 	refresh()
 
@@ -49,4 +50,8 @@ func _onSlotToggled(toggled_on: bool, slot: InventorySlot) -> void:
 func _onSkipTurnPressed():
 	skipTurnButton.disabled = true;
 	Global.gameCycle.battle.finishPlayerTurn()
+	pass;
+
+func disableUsedWeapon(_ignore):
+	refresh()
 	pass;

@@ -27,6 +27,7 @@ position = Vector2(770, 540)
 texture = ExtResource("3_7kt44")
 
 [node name="PortraitGg" type="Sprite2D" parent="." unique_id=759538160]
+unique_name_in_owner = true
 position = Vector2(552, 948)
 texture = ExtResource("3_lhckf")
 
@@ -124,6 +125,7 @@ position = Vector2(770, 540)
 texture = ExtResource("2_q0uje")
 
 [node name="SlotMachine" parent="." unique_id=277983810 instance=ExtResource("7_wk2re")]
+unique_name_in_owner = true
 
 [node name="GameCycle" type="Node" parent="." unique_id=332865073]
 script = ExtResource("1_wxgqe")
@@ -141,5 +143,6 @@ offset_bottom = 580.0
 grow_vertical = 0
 
 [node name="Inventory" parent="." unique_id=997599725 instance=ExtResource("11_ds3bl")]
+unique_name_in_owner = true
 
 [connection signal="pressed" from="Screeen/Location/NextLocationButton" to="." method="_on_next_location_button_pressed"]
