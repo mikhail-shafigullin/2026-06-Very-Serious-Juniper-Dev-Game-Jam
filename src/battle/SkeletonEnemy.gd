@@ -1,4 +1,4 @@
-class_name SimpleEnemy
+class_name SkeletonEnemy
 
 static func create() -> EnemyObject:
 	var weapon := ItemObject.new()
@@ -14,4 +14,4 @@ static func create() -> EnemyObject:
 			column.possibleSlots.append(slot)
 		weapon.columns.append(column)
 
-	return EnemyObject.new("Wolf", 1000, weapon)
+	return EnemyObject.new("Skeleton", 1000, weapon)

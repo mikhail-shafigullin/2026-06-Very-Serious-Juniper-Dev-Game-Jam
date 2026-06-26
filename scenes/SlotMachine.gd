@@ -88,6 +88,10 @@ func _on_player_slot_spun(result: SlotMachineResult) -> void:
 			.set_ease(Tween.EASE_OUT)\
 			.set_trans(Tween.TRANS_QUAD)
 
+	var totalDuration: float = 1.0 + (vboxColumns.size() - 1) * 0.1
+	rollTween.tween_property(rollEffectSprite, "modulate:a", 0.0, totalDuration * 0.5)\
+		.set_delay(totalDuration * 0.5)
+
 	rollTween.chain().tween_callback(func():
 		rollEffectSprite.hide()
 		_updateIsRollPossible()
@@ -109,6 +113,7 @@ func _stopShake() -> void:
 	slotMachineBox.position = shakeOriginalPos
 
 func rollTriggered() -> void:
+	rollEffectSprite.modulate = Color.WHITE
 	rollEffectSprite.show()
 
 func _on_handle_roll_triggered() -> void:

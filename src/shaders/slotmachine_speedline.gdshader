@@ -11,6 +11,7 @@ uniform float angle: hint_range(0.0, 360.0) = 60.0;
 
 
 void fragment() {
+	vec4 mod_color = COLOR;
 	vec2 uv = vec2(UV.x * cos(radians(angle)) - UV.y * sin(radians(angle)), UV.x * sin(radians(angle)) + UV.y * cos(radians(angle)));
 	vec4 noise_line = texture(noise, vec2(uv.x / line_length + fract(TIME) * speed, uv.y));
 	vec4 color;
@@ -19,5 +20,5 @@ void fragment() {
 	} else {
 		color = mix(line_color_a, line_color_b, 1.0 - noise_line.r);
 	}
-	COLOR = color;
+	COLOR = color * mod_color;
 }

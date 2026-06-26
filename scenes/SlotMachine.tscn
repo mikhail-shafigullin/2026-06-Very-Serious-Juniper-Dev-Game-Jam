@@ -5,6 +5,12 @@
 [ext_resource type="Shader" uid="uid://yxobukbjsehw" path="res://src/shaders/slotmachine_speedline.gdshader" id="2_gx68h"]
 [ext_resource type="Texture2D" uid="uid://bjff8li8fw0o2" path="res://assets/props/slot_machin.png" id="3_fir66"]
 
+[sub_resource type="Gradient" id="Gradient_04r4t"]
+colors = PackedColorArray(0.49019608, 0.19215687, 0.18431373, 1, 0.49119216, 0.19132397, 0.1860401, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gx68h"]
+gradient = SubResource("Gradient_04r4t")
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_rx0hn"]
 noise_type = 0
 frequency = 0.0578
@@ -17,16 +23,25 @@ shader = ExtResource("2_gx68h")
 shader_parameter/noise = SubResource("NoiseTexture2D_rx0hn")
 shader_parameter/line_color_a = Color(1.3225842, 1.3709858e-05, 2.1458907e-06, 0.388)
 shader_parameter/line_color_b = Color(1, 0, 0, 0)
-shader_parameter/back_color = Color(0, 0, 0, 0.17254902)
+shader_parameter/back_color = Color(0, 0, 0, 0.05490196)
 shader_parameter/line_threshold = 0.71999998390656
 shader_parameter/speed = 0.16999999620016
 shader_parameter/line_length = 100.0
 shader_parameter/angle = 0.0
 
 [sub_resource type="Gradient" id="Gradient_rx0hn"]
+offsets = PackedFloat32Array(0, 0.24773414, 0.72809666, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_l0tk0"]
 gradient = SubResource("Gradient_rx0hn")
+
+[sub_resource type="Gradient" id="Gradient_gx68h"]
+offsets = PackedFloat32Array(0, 0.1536232, 0.8086957, 1)
+colors = PackedColorArray(0, 0, 0, 0.39215687, 0, 0, 0, 0.11594206, 0, 0, 0, 0, 0, 0, 0, 0.39215687)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c87mw"]
+gradient = SubResource("Gradient_gx68h")
 
 [node name="SlotMachine" type="Node2D" unique_id=277983810]
 script = ExtResource("1_gx68h")
@@ -38,9 +53,17 @@ position = Vector2(334, 14)
 [node name="SlotMachineBox" type="Node2D" parent="." unique_id=1669601168]
 unique_name_in_owner = true
 
+[node name="Sprite2D2" type="Sprite2D" parent="SlotMachineBox" unique_id=1920474967]
+modulate = Color(0.38928658, 0.38928658, 0.38928673, 0.59607846)
+position = Vector2(185.62079, 171.96283)
+rotation = 1.5707964
+scale = Vector2(0.669, 250.80846)
+texture = SubResource("GradientTexture1D_gx68h")
+
 [node name="RollEffect" type="Sprite2D" parent="SlotMachineBox" unique_id=1006843059]
 unique_name_in_owner = true
 visible = false
+z_index = 1
 material = SubResource("ShaderMaterial_rx0hn")
 position = Vector2(190.64227, 171.46191)
 rotation = 1.5707964
@@ -48,8 +71,16 @@ scale = Vector2(0.6932518, 253.3451)
 texture = SubResource("GradientTexture1D_l0tk0")
 
 [node name="SlotMachin" type="Sprite2D" parent="SlotMachineBox" unique_id=1761757920]
+z_index = 1
 position = Vector2(764, 540)
 texture = ExtResource("3_fir66")
+
+[node name="Sprite2D" type="Sprite2D" parent="SlotMachineBox" unique_id=121937428]
+z_index = 1
+position = Vector2(188.85498, 171.96283)
+rotation = 1.5707964
+scale = Vector2(0.669, 244.34006)
+texture = SubResource("GradientTexture1D_c87mw")
 
 [node name="Control" type="Control" parent="." unique_id=4778735]
 clip_contents = true
