@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 SaveSystem="*uid://bty38hy42m4mh"
 EventBus="*uid://oj54oy6l1m8i"
-SceneTransitionManager="uid://c8q2rnbj4vp5x"
+SceneTransitionManager="*uid://c8q2rnbj4vp5x"
 Global="*uid://jbmryfsdnmy2"
 
 [display]

@@ -44,6 +44,18 @@ func _doFadeTransition() -> void:
 	await tween.finished
 	fadeRect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
+func fadeOut() -> void:
+	fadeRect.mouse_filter = Control.MOUSE_FILTER_STOP
+	var tween := create_tween()
+	tween.tween_property(fadeRect, "modulate:a", 1.0, FADE_DURATION)
+	await tween.finished
+
+func fadeIn() -> void:
+	var tween := create_tween()
+	tween.tween_property(fadeRect, "modulate:a", 0.0, FADE_DURATION)
+	await tween.finished
+	fadeRect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
 func _doLoadingScreenTransition() -> void:
 	loadingScreen.visible = true
 	loadingBar.value = 0.0

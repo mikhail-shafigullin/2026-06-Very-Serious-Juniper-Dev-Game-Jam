@@ -2,7 +2,7 @@ extends Node
 
 signal gameStarted
 
-signal location_started()
+signal location_started(location: LocationObject)
 signal location_finished()
 
 signal battle_started()

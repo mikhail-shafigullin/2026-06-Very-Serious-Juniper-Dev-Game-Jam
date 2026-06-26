@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cv8tjd4w8xbnw" path="res://assets/props/fon_3.png" id="7_rx0hn"]
 [ext_resource type="PackedScene" uid="uid://bpss1kp054jo0" path="res://scenes/SlotMachine.tscn" id="7_wk2re"]
 [ext_resource type="Texture2D" uid="uid://ckycd2ou5n8xp" path="res://assets/props/fon_4.png" id="8_1o8jg"]
+[ext_resource type="PackedScene" uid="uid://4gp637bp22gf" path="res://scenes/RewardPanel.tscn" id="10_dxm1b"]
 [ext_resource type="PackedScene" uid="uid://c26e58qn4b1cr" path="res://scenes/EnemiesContainer.tscn" id="11_1o8jg"]
 [ext_resource type="PackedScene" uid="uid://cq2yhwauh8abg" path="res://scenes/Inventory.tscn" id="11_ds3bl"]
 [ext_resource type="PackedScene" uid="uid://wj4tiy5s82v4" path="res://levels/DebugPanel.tscn" id="11_wk2re"]
@@ -32,36 +33,59 @@ texture = ExtResource("3_lhckf")
 position = Vector2(1083, 854)
 texture = ExtResource("3_wk2re")
 
-[node name="Location" type="Node2D" parent="." unique_id=1192662094]
-position = Vector2(405, 2)
+[node name="Screeen" type="Control" parent="." unique_id=303726744]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 419.0
+offset_top = 3.0
+offset_right = 1502.0
+offset_bottom = 810.0
 
-[node name="Fon1" type="Sprite2D" parent="Location" unique_id=2095042278]
+[node name="Location" type="Node2D" parent="Screeen" unique_id=1192662094]
+position = Vector2(-14, -1)
+
+[node name="Fon1" type="Sprite2D" parent="Screeen/Location" unique_id=2095042278]
+unique_name_in_owner = true
 position = Vector2(556, 404)
 texture = ExtResource("4_7f4i3")
 
-[node name="Fon2" type="Sprite2D" parent="Location" unique_id=1712631717]
+[node name="Fon2" type="Sprite2D" parent="Screeen/Location" unique_id=1712631717]
+unique_name_in_owner = true
 visible = false
 position = Vector2(556, 404)
 texture = ExtResource("6_ds3bl")
 
-[node name="Fon3" type="Sprite2D" parent="Location" unique_id=1092914855]
+[node name="Fon3" type="Sprite2D" parent="Screeen/Location" unique_id=1092914855]
+unique_name_in_owner = true
 visible = false
 position = Vector2(556, 404)
 texture = ExtResource("7_rx0hn")
 
-[node name="Fon4" type="Sprite2D" parent="Location" unique_id=590057393]
+[node name="Fon4" type="Sprite2D" parent="Screeen/Location" unique_id=590057393]
+unique_name_in_owner = true
 visible = false
 position = Vector2(556, 404)
 texture = ExtResource("8_1o8jg")
+
+[node name="BlackFadeIn" type="ColorRect" parent="Screeen/Location" unique_id=1935955707]
+unique_name_in_owner = true
+offset_right = 1101.0
+offset_bottom = 811.0
+mouse_filter = 2
+color = Color(0.036973957, 0.012095033, 0.0054641007, 1)
+
+[node name="EnemiesContainer" parent="Screeen" unique_id=1931371329 instance=ExtResource("11_1o8jg")]
+position = Vector2(99, 26)
+
+[node name="RewardPanel" parent="Screeen" unique_id=1301627167 instance=ExtResource("10_dxm1b")]
+visible = false
+layout_mode = 1
 
 [node name="ZheleznayaRamka" type="Sprite2D" parent="." unique_id=539880497]
 position = Vector2(770, 540)
 texture = ExtResource("2_q0uje")
 
 [node name="SlotMachine" parent="." unique_id=277983810 instance=ExtResource("7_wk2re")]
-
-[node name="EnemiesContainer" parent="." unique_id=1931371329 instance=ExtResource("11_1o8jg")]
-position = Vector2(518, 29)
 
 [node name="GameCycle" type="Node" parent="." unique_id=332865073]
 script = ExtResource("1_wxgqe")

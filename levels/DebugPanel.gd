@@ -141,6 +141,7 @@ func _onSkipTurn() -> void:
 
 func _initLocation() -> void:
 	Global.gameCycle.initLocation()
+	Global.gameCycle.startLocation();
 
 func _onBattleButtonPressed() -> void:
 	Global.gameCycle.initBattle()

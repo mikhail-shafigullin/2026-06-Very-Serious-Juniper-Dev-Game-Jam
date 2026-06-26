@@ -3,12 +3,15 @@ extends Node
 
 var player: PlayerController;
 var battle: BattleCycle;
+var locationFactory: LocationFactory
+var currentLocation: LocationObject
 
 func _init() -> void:
 	pass;
 
 func _ready() -> void:
 	Global.gameCycle = self;
+	locationFactory = LocationFactory.new()
 	pass;
 
 func initGame() -> void:
@@ -18,12 +21,13 @@ func initLocation() -> void:
 	player.inventory.leftHand.item = SimpleHandWeapon.create()
 
 func startLocation() -> void:
-	EventBus.location_started.emit();
+	currentLocation = locationFactory.next();
+	EventBus.location_started.emit(currentLocation);
 
 func initBattle() -> void:
 	battle = BattleCycle.new()
 	var event := BattleEvent.new()
-	event.enemy = SimpleEnemy.create()
+	event.enemy = currentLocation.enemy
 	battle.currentBattle = event
 
 func startBattle() -> void:

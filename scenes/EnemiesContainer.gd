@@ -3,7 +3,11 @@ extends Node2D
 
 const ENEMY_SPRITE_MAP: Dictionary = {
 	"Wolf": 1,
-	"Skeleton": 2
+	"Skeleton": 2,
+	"Goblin": 3,
+	"Woman": 4,
+	"Knight": 5,
+	"God": 6
 }
 
 const ORBIT_RADIUS: float = 5.0
@@ -64,7 +68,12 @@ func _showEnemy(index: int) -> void:
 	if _activeSprite == null:
 		return
 	_basePosition = _activeSprite.position
+	_activeSprite.modulate.a = 0.0
+	_activeSprite.scale = Vector2(0.8, 0.8)
 	_activeSprite.visible = true
+	var appearTween := create_tween().set_parallel()
+	appearTween.tween_property(_activeSprite, "modulate:a", 1.0, 0.4)
+	appearTween.tween_property(_activeSprite, "scale", Vector2(1.0, 1.0), 0.4)
 	_startOrbitTween()
 
 func _startOrbitTween() -> void:
@@ -94,13 +103,22 @@ func onPlayerAttack(damage: int) -> void:
 func _onTimerTimeout() -> void:
 	playerAttackEffect.show()
 	playerAttackEffect.play("slash")
+	var tween := create_tween()
+	tween.tween_interval(0.2)
+	tween.tween_callback(_triggerHitEffects)
+
+func _triggerHitEffects() -> void:
+	if _activeSprite != null:
+		var flashTween := create_tween()
+		flashTween.tween_property(_activeSprite, "modulate", Color.RED, 0.08)
+		flashTween.tween_property(_activeSprite, "modulate", Color.WHITE, 0.08)
 	damageAnimLabel.text = str(_pendingDamage)
 	damageAnimLabel.modulate.a = 1.0
 	damageAnimLabel.position = Vector2.ZERO
 	damageAnimLabel.show()
-	var tween := create_tween()
-	tween.tween_property(damageAnimLabel, "position:y", -40.0, 0.6)
-	tween.parallel().tween_property(damageAnimLabel, "modulate:a", 0.0, 0.6)
+	var labelTween := create_tween()
+	labelTween.tween_property(damageAnimLabel, "position:y", -40.0, 0.6)
+	labelTween.parallel().tween_property(damageAnimLabel, "modulate:a", 0.0, 0.6)
 
 func _onAttackEffectFinished() -> void:
 	playerAttackEffect.stop()

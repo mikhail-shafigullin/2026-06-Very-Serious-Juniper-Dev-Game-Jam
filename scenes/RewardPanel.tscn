@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://4gp637bp22gf"]
+
+[ext_resource type="Script" uid="uid://i2hcpf2iii4a" path="res://scenes/RewardPanel.gd" id="1_3bb7y"]
+[ext_resource type="ButtonGroup" uid="uid://bsh1d2oi3av40" path="res://assets/themes/RewardButtonGroup.tres" id="2_hl4sj"]
+[ext_resource type="Theme" uid="uid://16pty85j0cwk" path="res://assets/themes/InventoryTheme.tres" id="2_rj4e6"]
+[ext_resource type="Texture2D" uid="uid://c0b6rh7m1yvf0" path="res://assets/props/sword_common.png" id="2_up5iq"]
+[ext_resource type="Texture2D" uid="uid://dee3ast4327ta" path="res://assets/props/dospeh_common.png" id="3_hl4sj"]
+
+[node name="RewardPanel" type="Control" unique_id=1301627167]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -303.0
+offset_top = -217.0
+offset_right = 303.0
+offset_bottom = 217.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3bb7y")
+
+[node name="Panel" type="Panel" parent="." unique_id=1519166487]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.2420001
+offset_bottom = -0.028015137
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Panel" unique_id=1254574654]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 15.0
+offset_right = -16.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1699505060]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -217.5
+offset_top = 92.0
+offset_right = 217.5
+offset_bottom = 198.0
+grow_horizontal = 2
+theme = ExtResource("2_rj4e6")
+theme_override_constants/separation = 60
+
+[node name="Reward1" type="Button" parent="HBoxContainer" unique_id=731877153]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(105, 105)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_hl4sj")
+icon = ExtResource("2_up5iq")
+expand_icon = true
+
+[node name="Reward2" type="Button" parent="HBoxContainer" unique_id=1000203088]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(105, 105)
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+toggle_mode = true
+button_group = ExtResource("2_hl4sj")
+icon = ExtResource("2_up5iq")
+expand_icon = true
+
+[node name="Reward3" type="Button" parent="HBoxContainer" unique_id=303528471]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(105, 105)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_hl4sj")
+icon = ExtResource("3_hl4sj")
+expand_icon = true
+
+[node name="Panel2" type="Panel" parent="." unique_id=2127057065]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 86.0
+offset_top = 216.0
+offset_right = -85.0
+offset_bottom = -81.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1959671292]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -157.5
+offset_top = -40.0
+offset_right = 157.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="TakeItButton" type="Button" parent="HBoxContainer2" unique_id=853220195]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Take it"
+
+[node name="IgnoreButton" type="Button" parent="HBoxContainer2" unique_id=702562552]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ignore"
