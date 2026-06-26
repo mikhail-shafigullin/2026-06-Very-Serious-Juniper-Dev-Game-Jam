@@ -5,6 +5,7 @@ const SLOT_SCENE = preload("res://scenes/slots/slotMachineSlot.tscn")
 const SLOT_HEIGHT = 53
 const SPIN_SLOT_COUNT = 30
 
+@onready var handle: Handle = %Handle
 @onready var slotMachineBox: Node2D = %SlotMachineBox
 @onready var rollEffectSprite: Sprite2D = %RollEffect
 @onready var column1: VBoxContainer = %Column1
@@ -14,11 +15,15 @@ const SPIN_SLOT_COUNT = 30
 var shakeTween: Tween
 var rollTween: Tween
 var shakeOriginalPos: Vector2
+var currentSlot: InventorySlot = null
+var pendingSpinResult: SlotMachineResult = null
 
 func _ready() -> void:
 	shakeOriginalPos = slotMachineBox.position
 	EventBus.player_weapon_chosen.connect(_on_player_weapon_chosen)
 	EventBus.player_slot_spun.connect(_on_player_slot_spun)
+	# EventBus.player_turn_result.connect(_on_player_turn_result)
+	EventBus.player_turn_started.connect(_on_player_turn_started)
 
 func setController(controller: SlotMachineController) -> void:
 	var vboxColumns := [column1, column2, column3]
@@ -33,9 +38,18 @@ func setController(controller: SlotMachineController) -> void:
 			vbox.add_child(slotNode)
 			slotNode.setSlotType(slot.type)
 
+func _updateIsRollPossible() -> void:
+	handle.isRollPossible = currentSlot != null and currentSlot.item != null and not currentSlot.isOnCooldown()
+
+func _on_player_turn_started() -> void:
+	currentSlot = null
+	_updateIsRollPossible()
+
 func _on_player_weapon_chosen(slot: InventorySlot) -> void:
-	if slot.item != null:
+	currentSlot = slot
+	if slot != null and slot.item != null:
 		setController(SlotMachineController.fromItem(slot.item))
+	_updateIsRollPossible()
 
 func _on_player_slot_spun(result: SlotMachineResult) -> void:
 	var vboxColumns := [column1, column2, column3]
@@ -47,7 +61,7 @@ func _on_player_slot_spun(result: SlotMachineResult) -> void:
 		var possibleSlots: Array = result.controller.columns[i].possibleSlots
 
 		for child in vbox.get_children():
-			child.free()
+			child.queue_free()
 
 		for j in SPIN_SLOT_COUNT:
 			var slotNode: SlotMachineSlot = SLOT_SCENE.instantiate()
@@ -63,6 +77,7 @@ func _on_player_slot_spun(result: SlotMachineResult) -> void:
 
 	# Wait one frame so VBoxContainer finishes layout and child positions are accurate
 	await get_tree().process_frame
+	await get_tree().process_frame
 
 	rollTween = create_tween().set_parallel()
 	for i in vboxColumns.size():
@@ -73,7 +88,10 @@ func _on_player_slot_spun(result: SlotMachineResult) -> void:
 			.set_ease(Tween.EASE_OUT)\
 			.set_trans(Tween.TRANS_QUAD)
 
-	rollTween.chain().tween_callback(func(): rollEffectSprite.hide())
+	rollTween.chain().tween_callback(func():
+		rollEffectSprite.hide()
+		_updateIsRollPossible()
+	)
 
 func _startShake() -> void:
 	if shakeTween:

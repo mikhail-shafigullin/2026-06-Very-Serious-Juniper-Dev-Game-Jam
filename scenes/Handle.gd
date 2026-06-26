@@ -18,6 +18,8 @@ signal roll_triggered()
 signal handle_fully_pulled()
 signal handle_left_bottom()
 
+var isRollPossible: bool = false
+
 var currentState: int = 1
 var targetState: int = 1
 var isDragging: bool = false
@@ -57,7 +59,9 @@ func _input(event: InputEvent) -> void:
 func _computeTargetState(delta: float) -> int:
 	if delta < THRESHOLD_2:
 		return 1
-	elif delta < THRESHOLD_3:
+	if not isRollPossible:
+		return 2
+	if delta < THRESHOLD_3:
 		return 2
 	elif delta < THRESHOLD_4:
 		return 3
@@ -65,7 +69,7 @@ func _computeTargetState(delta: float) -> int:
 		return 4
 
 func _startReturn() -> void:
-	if reachedBottom:
+	if reachedBottom and isRollPossible:
 		roll_triggered.emit()
 	reachedBottom = false
 	isDragging = false

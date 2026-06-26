@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c0b6rh7m1yvf0" path="res://assets/props/sword_common.png" id="4_yj0ni"]
 [ext_resource type="Texture2D" uid="uid://dee3ast4327ta" path="res://assets/props/dospeh_common.png" id="5_cexoc"]
 [ext_resource type="Texture2D" uid="uid://dxyqxugngifpd" path="res://assets/props/boots_common.png" id="6_f0lgf"]
+[ext_resource type="Theme" uid="uid://mnca2ve0ptov" path="res://assets/themes/Common.tres" id="9_yj0ni"]
 
 [node name="Inventory" type="Control" unique_id=997599725]
 layout_mode = 3
@@ -83,3 +84,13 @@ toggle_mode = true
 button_group = ExtResource("3_7f7tj")
 icon = ExtResource("6_f0lgf")
 expand_icon = true
+
+[node name="SkipTurnButton" type="Button" parent="." unique_id=1177969433]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 247.0
+offset_top = 261.0
+offset_right = 331.0
+offset_bottom = 347.0
+theme = ExtResource("9_yj0ni")
+text = "Skip Turn"

@@ -4,7 +4,7 @@ static func create() -> ItemObject:
 	var item := ItemObject.new()
 	item.itemName = "Simple Hand Weapon"
 	item.slotType = InventorySlot.InventorySlotType.HAND
-	item.cooldown = 0;
+	item.cooldown = 1;
 
 	var allTypes: Array = SlotObject.SlotType.values()
 

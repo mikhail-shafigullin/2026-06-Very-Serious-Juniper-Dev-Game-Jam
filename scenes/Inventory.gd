@@ -6,13 +6,15 @@ extends Control
 @onready var slotRightHand: Button = %InventorySlotRightHand
 @onready var slotBody: Button = %InventorySlotBody
 @onready var slotLegs: Button = %InventorySlotLegs
+@onready var skipTurnButton: Button = %SkipTurnButton;
 
 func _ready() -> void:
-	slotHead.pressed.connect(func() -> void: _onSlotSelected(Global.gameCycle.player.inventory.head))
-	slotLeftHand.pressed.connect(func() -> void: _onSlotSelected(Global.gameCycle.player.inventory.leftHand))
-	slotRightHand.pressed.connect(func() -> void: _onSlotSelected(Global.gameCycle.player.inventory.rightHand))
-	slotBody.pressed.connect(func() -> void: _onSlotSelected(Global.gameCycle.player.inventory.body))
-	slotLegs.pressed.connect(func() -> void: _onSlotSelected(Global.gameCycle.player.inventory.legs))
+	slotHead.toggled.connect(func(toggled_on: bool) -> void: _onSlotToggled(toggled_on, Global.gameCycle.player.inventory.head))
+	slotLeftHand.toggled.connect(func(toggled_on: bool) -> void: _onSlotToggled(toggled_on, Global.gameCycle.player.inventory.leftHand))
+	slotRightHand.toggled.connect(func(toggled_on: bool) -> void: _onSlotToggled(toggled_on, Global.gameCycle.player.inventory.rightHand))
+	slotBody.toggled.connect(func(toggled_on: bool) -> void: _onSlotToggled(toggled_on, Global.gameCycle.player.inventory.body))
+	slotLegs.toggled.connect(func(toggled_on: bool) -> void: _onSlotToggled(toggled_on, Global.gameCycle.player.inventory.legs))
+	skipTurnButton.pressed.connect(_onSkipTurnPressed);
 
 	EventBus.battle_started.connect(refresh)
 	EventBus.player_turn_started.connect(refresh)
@@ -33,8 +35,18 @@ func _refreshSlot(button: Button, slot: InventorySlot) -> void:
 		return
 	button.visible = true
 	button.disabled = slot.isOnCooldown()
+	button.button_pressed = false
+	skipTurnButton.disabled = false;
 
-func _onSlotSelected(slot: InventorySlot) -> void:
+func _onSlotToggled(toggled_on: bool, slot: InventorySlot) -> void:
 	if Global.gameCycle.battle == null:
 		return
-	Global.gameCycle.battle.chooseWeapon(slot)
+	if toggled_on:
+		Global.gameCycle.battle.chooseWeapon(slot)
+	else:
+		Global.gameCycle.battle.unchooseWeapon(slot)
+
+func _onSkipTurnPressed():
+	skipTurnButton.disabled = true;
+	Global.gameCycle.battle.finishPlayerTurn()
+	pass;

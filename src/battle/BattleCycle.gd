@@ -27,6 +27,12 @@ func chooseWeapon(slot: InventorySlot) -> void:
 	chosenSlot = slot
 	EventBus.player_weapon_chosen.emit(slot)
 
+func unchooseWeapon(slot: InventorySlot) -> void:
+	if turnState != TurnState.PLAYER_TURN:
+		return
+	chosenSlot = null
+	EventBus.player_weapon_chosen.emit(null)
+
 func usePlayerItem() -> void:
 	if turnState != TurnState.PLAYER_TURN:
 		return

@@ -8,9 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://drgn7j34j2b0k" path="res://assets/props/portrait_gg.png" id="3_lhckf"]
 [ext_resource type="Texture2D" uid="uid://cnd8u7cusredf" path="res://assets/props/hp_bar.png" id="3_wk2re"]
 [ext_resource type="Texture2D" uid="uid://d1yy7jookug0i" path="res://assets/props/fon_1.png" id="4_7f4i3"]
+[ext_resource type="Texture2D" uid="uid://5hyxqev2vtxy" path="res://assets/props/fon_2.png" id="6_ds3bl"]
+[ext_resource type="Texture2D" uid="uid://cv8tjd4w8xbnw" path="res://assets/props/fon_3.png" id="7_rx0hn"]
 [ext_resource type="PackedScene" uid="uid://bpss1kp054jo0" path="res://scenes/SlotMachine.tscn" id="7_wk2re"]
+[ext_resource type="Texture2D" uid="uid://ckycd2ou5n8xp" path="res://assets/props/fon_4.png" id="8_1o8jg"]
 [ext_resource type="PackedScene" uid="uid://cq2yhwauh8abg" path="res://scenes/Inventory.tscn" id="11_ds3bl"]
 [ext_resource type="PackedScene" uid="uid://wj4tiy5s82v4" path="res://levels/DebugPanel.tscn" id="11_wk2re"]
+[ext_resource type="Texture2D" uid="uid://dqo35s7ow6hbx" path="res://assets/props/monstr_2.png" id="12_dxm1b"]
+[ext_resource type="Texture2D" uid="uid://3d03eecgfnyk" path="res://assets/props/monstr_3.png" id="13_bnn7c"]
+[ext_resource type="Texture2D" uid="uid://ceppg2vtiyvax" path="res://assets/props/monstr_4.png" id="14_y5077"]
+[ext_resource type="Texture2D" uid="uid://rbemfsm2w2yv" path="res://assets/props/monstr_5.png" id="15_fbucy"]
+[ext_resource type="Texture2D" uid="uid://d3fl4o0ywxexh" path="res://assets/props/monstr_6.png" id="16_cgn7e"]
 
 [node name="BattleScene" type="Node2D" unique_id=1814848257]
 script = ExtResource("1_ds3bl")
@@ -29,9 +37,27 @@ texture = ExtResource("3_lhckf")
 position = Vector2(1083, 854)
 texture = ExtResource("3_wk2re")
 
-[node name="Fon1" type="Sprite2D" parent="." unique_id=2095042278]
-position = Vector2(961, 406)
+[node name="Location" type="Node2D" parent="." unique_id=1192662094]
+position = Vector2(405, 2)
+
+[node name="Fon1" type="Sprite2D" parent="Location" unique_id=2095042278]
+position = Vector2(556, 404)
 texture = ExtResource("4_7f4i3")
+
+[node name="Fon2" type="Sprite2D" parent="Location" unique_id=1712631717]
+visible = false
+position = Vector2(556, 404)
+texture = ExtResource("6_ds3bl")
+
+[node name="Fon3" type="Sprite2D" parent="Location" unique_id=1092914855]
+visible = false
+position = Vector2(556, 404)
+texture = ExtResource("7_rx0hn")
+
+[node name="Fon4" type="Sprite2D" parent="Location" unique_id=590057393]
+visible = false
+position = Vector2(556, 404)
+texture = ExtResource("8_1o8jg")
 
 [node name="ZheleznayaRamka" type="Sprite2D" parent="." unique_id=539880497]
 position = Vector2(770, 540)
@@ -39,9 +65,37 @@ texture = ExtResource("2_q0uje")
 
 [node name="SlotMachine" parent="." unique_id=277983810 instance=ExtResource("7_wk2re")]
 
-[node name="Monstr1" type="Sprite2D" parent="." unique_id=440115601]
-position = Vector2(969, 496)
+[node name="Enemy" type="Node2D" parent="." unique_id=87484671]
+position = Vector2(518, 29)
+
+[node name="Monstr1" type="Sprite2D" parent="Enemy" unique_id=440115601]
+position = Vector2(451, 467)
 texture = ExtResource("2_i4p2b")
+
+[node name="Monstr2" type="Sprite2D" parent="Enemy" unique_id=1389819959]
+visible = false
+position = Vector2(440, 397)
+texture = ExtResource("12_dxm1b")
+
+[node name="Monstr3" type="Sprite2D" parent="Enemy" unique_id=910182964]
+visible = false
+position = Vector2(443, 526)
+texture = ExtResource("13_bnn7c")
+
+[node name="Monstr4" type="Sprite2D" parent="Enemy" unique_id=511791379]
+visible = false
+position = Vector2(416, 391)
+texture = ExtResource("14_y5077")
+
+[node name="Monstr5" type="Sprite2D" parent="Enemy" unique_id=1535338878]
+visible = false
+position = Vector2(516, 388)
+texture = ExtResource("15_fbucy")
+
+[node name="Monstr6" type="Sprite2D" parent="Enemy" unique_id=1629128517]
+visible = false
+position = Vector2(440, 380)
+texture = ExtResource("16_cgn7e")
 
 [node name="GameCycle" type="Node" parent="." unique_id=332865073]
 script = ExtResource("1_wxgqe")
@@ -51,9 +105,10 @@ anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
-offset_left = 812.0
-offset_right = 1387.0
-offset_bottom = 570.0
+offset_left = 436.0
+offset_top = 21.0
+offset_right = 1011.0
+offset_bottom = 591.0
 grow_vertical = 0
 
 [node name="Inventory" parent="." unique_id=997599725 instance=ExtResource("11_ds3bl")]
