@@ -5,6 +5,7 @@ var hpReduction: int
 
 func _init(_amount: int) -> void:
 	hpReduction = _amount
+	strValue = "-" + str(hpReduction) + "MaxHP"
 
 func execute(_enemy: EnemyObject, player: PlayerController) -> int:
 	player.maxHp -= hpReduction

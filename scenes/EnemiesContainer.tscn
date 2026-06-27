@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://d3fl4o0ywxexh" path="res://assets/props/monstr_6.png" id="6_8hqsg"]
 [ext_resource type="Texture2D" uid="uid://ymrqf7467k2i" path="res://assets/pixelboy/cut_medium.png" id="8_4umsk"]
 [ext_resource type="FontFile" uid="uid://cjp8bt3aul12y" path="res://assets/fonts/IBMPlexSerif-Medium.ttf" id="8_gg1kc"]
+[ext_resource type="Texture2D" uid="uid://c3s18ai6j3ko0" path="res://assets/icons/sword.png" id="10_ju3kh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4umsk"]
 bg_color = Color(0.3882353, 0.12156863, 0.05490196, 0.4745098)
@@ -150,14 +151,22 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_gx68h")
 value = 100.0
 show_percentage = false
 
+[node name="Panel" type="Panel" parent="EnemyHealthBar" unique_id=787780145]
+layout_mode = 0
+offset_left = 0.8982849
+offset_top = 18.041687
+offset_right = 30.61148
+offset_bottom = 86.75487
+
 [node name="HealthLabel" type="Label" parent="EnemyHealthBar" unique_id=377410616]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 4.0000153
+offset_left = 1.5258789e-05
 offset_top = 257.0
-offset_right = 240.00002
+offset_right = 236.00002
 offset_bottom = 324.0
 rotation = -1.5707964
+theme_override_colors/font_color = Color(0.80784315, 0.13333334, 0.03529412, 1)
 theme_override_fonts/font = ExtResource("8_gg1kc")
 theme_override_font_sizes/font_size = 22
 text = "10/10"
@@ -197,3 +206,48 @@ offset_right = 71.0
 offset_bottom = 35.0
 theme_override_colors/font_color = Color(1, 0.09019608, 0.019607844, 1)
 theme_override_font_sizes/font_size = 30
+
+[node name="ActionIntent" type="Control" parent="." unique_id=1676230392]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 214.0
+offset_top = 229.0
+offset_right = 430.0
+offset_bottom = 292.0
+
+[node name="Panel" type="Panel" parent="ActionIntent" unique_id=665092590]
+layout_mode = 0
+offset_left = -2.0
+offset_right = 50.0
+offset_bottom = 79.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ActionIntent" unique_id=2136897166]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 178.0
+offset_bottom = 51.0
+
+[node name="ActionIntentTextureRect" type="TextureRect" parent="ActionIntent/HBoxContainer" unique_id=1265343979]
+unique_name_in_owner = true
+modulate = Color(0.80784315, 0.13333334, 0.03529412, 1)
+self_modulate = Color(1, 0.101960786, 0.101960786, 1)
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("10_ju3kh")
+expand_mode = 2
+
+[node name="ActionIntentLabel" type="Label" parent="ActionIntent" unique_id=2052892651]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -170.0
+offset_top = 41.0
+offset_right = 47.0
+offset_bottom = 81.0
+theme_override_colors/font_color = Color(0.80784315, 0.13333334, 0.03529412, 1)
+theme_override_fonts/font = ExtResource("8_gg1kc")
+theme_override_font_sizes/font_size = 26
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1

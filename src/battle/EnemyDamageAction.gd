@@ -5,6 +5,7 @@ var damage: int
 
 func _init(_damage: int) -> void:
 	damage = _damage
+	strValue = str(damage)
 
 func execute(enemy: EnemyObject, _player: PlayerController) -> int:
 	return damage + enemy.strengthBonus

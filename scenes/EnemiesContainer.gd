@@ -24,6 +24,9 @@ const ORBIT_SPEED: float = 1.5
 @onready var timer: Timer = %Timer;
 @onready var damageAnimLabel: Label = %DamageAnimLabel;
 @onready var healthLabel: Label = %HealthLabel;
+@onready var actionIntentControl: Control = %ActionIntent;
+@onready var actionIntentTexture: TextureRect = %ActionIntentTextureRect;
+@onready var actionIntentLabel: Label = %ActionIntentLabel;
 
 var _activeSprite: Sprite2D = null
 var _basePosition: Vector2 = Vector2.ZERO
@@ -43,6 +46,7 @@ func _ready() -> void:
 	EventBus.battle_finished.connect(_onBattleFinished)
 	EventBus.player_turn_result.connect(onPlayerAttack)
 	EventBus.enemy_hp_changed.connect(_onEnemyHpChanged)
+	EventBus.enemy_turn_result.connect(_updateActionIntent)
 
 func _hideAllEnemies() -> void:
 	if _tween != null:
@@ -67,6 +71,7 @@ func _on_battle_started() -> void:
 	enemyHealthBar.value = enemy.maxHp
 	healthLabel.text = str(enemy.maxHp) + "/" + str(enemy.maxHp);
 	enemyHealthBar.show()
+	actionIntentControl.show()
 
 func _showEnemy(index: int) -> void:
 	match index:
@@ -101,6 +106,7 @@ func _onEnemyHpChanged(current: int, maxHp: int) -> void:
 func _onBattleFinished() -> void:
 	_battleFinished = true
 	enemyHealthBar.hide()
+	actionIntentControl.hide()
 	if _tween != null:
 		_tween.kill()
 		_tween = null
@@ -153,3 +159,16 @@ func _startNextBattle(_location) -> void:
 	Global.gameCycle.initBattle()
 	await get_tree().create_timer(2.0).timeout
 	Global.gameCycle.startBattle()
+
+func _updateActionIntent(_ignore) -> void:
+	var enemy := Global.gameCycle.battle.currentBattle.enemy
+	var action: EnemyAction = enemy.actions[enemy.currentActionIndex]
+	actionIntentLabel.text = action.strValue
+	if action is EnemyDamageAction:
+		actionIntentTexture.texture = load("res://assets/icons/sword.png")
+	elif action is EnemyPlayerDebuffAction:
+		actionIntentTexture.texture = load("res://assets/icons/suit_hearts_broken.png")
+	elif action is EnemyStrengthAction:
+		actionIntentTexture.texture = load("res://assets/icons/arrow_right.png")
+	else:
+		actionIntentTexture.texture = load("res://assets/icons/points.png")
