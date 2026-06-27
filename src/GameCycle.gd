@@ -28,6 +28,9 @@ func initLocation() -> void:
 
 func startLocation() -> void:
 	currentLocation = locationFactory.next();
+	if(currentLocation == null):
+		EventBus.game_end.emit();
+		return;
 	EventBus.location_started.emit(currentLocation);
 
 func initBattle() -> void:

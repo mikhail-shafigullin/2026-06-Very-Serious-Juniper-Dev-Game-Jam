@@ -148,4 +148,20 @@ grow_vertical = 0
 [node name="Inventory" parent="." unique_id=997599725 instance=ExtResource("11_ds3bl")]
 unique_name_in_owner = true
 
+[node name="Credits" type="ColorRect" parent="." unique_id=1814237626]
+unique_name_in_owner = true
+visible = false
+z_index = 2
+offset_right = 1542.0
+offset_bottom = 1079.0
+color = Color(0.26104397, 0, 0.015111792, 1)
+
+[node name="Label" type="Label" parent="Credits" unique_id=586382968]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 84.0
+offset_right = 192.0
+offset_bottom = 107.0
+text = "Thank you for playing"
+
 [connection signal="pressed" from="Screeen/Location/NextLocationButton" to="." method="_on_next_location_button_pressed"]

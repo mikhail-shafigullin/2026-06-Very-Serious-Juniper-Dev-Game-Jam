@@ -21,3 +21,5 @@ signal enemy_slot_spun(result: SlotMachineResult)
 signal enemy_turn_result(total: int)
 
 signal rewards_available(items: Array)
+signal game_over();
+signal game_end();

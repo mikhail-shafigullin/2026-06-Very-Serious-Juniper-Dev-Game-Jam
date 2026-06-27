@@ -11,6 +11,7 @@ extends Node2D
 @onready var portraitSprite: Sprite2D = %PortraitGg;
 @onready var inventory: Control = %Inventory;
 @onready var slotMachine: Node2D = %SlotMachine;
+@onready var creditsControl: Control = %Credits;
 
 var rand: RandomNumberGenerator;
 
@@ -20,6 +21,7 @@ func _ready() -> void:
 	EventBus.location_started.connect(locationChange)
 	EventBus.battle_finished.connect(_battle_finished)
 	EventBus.player_hp_changed.connect(_onPlayerHpChanged)
+	EventBus.game_end.connect(func(): creditsControl.show())
 	Global.gameCycle.initGame();
 	Global.gameCycle.initLocation();
 	Global.gameCycle.startLocation();

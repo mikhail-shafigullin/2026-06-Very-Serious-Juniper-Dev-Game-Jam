@@ -15,6 +15,8 @@ func _init():
 	]
 
 func next() -> LocationObject:
+	if(nextIndex >= locations.size()):
+		return null;
 	var nextLocation = locations[nextIndex];
 	nextIndex+=1;
 	return nextLocation
