@@ -12,6 +12,9 @@ extends Node2D
 @onready var inventory: Control = %Inventory;
 @onready var slotMachine: Node2D = %SlotMachine;
 @onready var creditsControl: Control = %Credits;
+@onready var gameOverPanel: Control = %GameOverPanel;
+@onready var resetGameButton: Button = %ResetGameButton;
+@onready var restartFightButton: Button = %RestartFightButton;
 
 var rand: RandomNumberGenerator;
 
@@ -22,6 +25,9 @@ func _ready() -> void:
 	EventBus.battle_finished.connect(_battle_finished)
 	EventBus.player_hp_changed.connect(_onPlayerHpChanged)
 	EventBus.game_end.connect(func(): creditsControl.show())
+	EventBus.game_over.connect(_gameOver)
+	resetGameButton.pressed.connect(_on_reset_game_button_pressed)
+
 	Global.gameCycle.initGame();
 	Global.gameCycle.initLocation();
 	Global.gameCycle.startLocation();
@@ -88,3 +94,15 @@ func _shake(node: CanvasItem) -> void:
 
 func _on_next_location_button_pressed() -> void:
 	Global.gameCycle.startLocation()
+
+func _on_reset_game_button_pressed() -> void:
+	get_tree().reload_current_scene()
+
+func _gameOver() -> void:
+	var tween := create_tween().set_parallel(true)
+	tween.tween_property(portraitSprite, "modulate", Color.RED, 0.5)
+	await get_tree().create_timer(0.3).timeout
+	gameOverPanel.modulate.a = 0.0
+	gameOverPanel.show()
+	var panelTween := create_tween()
+	panelTween.tween_property(gameOverPanel, "modulate:a", 1.0, 0.5)

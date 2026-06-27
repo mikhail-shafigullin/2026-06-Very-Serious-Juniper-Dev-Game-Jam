@@ -62,4 +62,5 @@ func claimRewards(itemIndex: int) -> void:
 	rewardController.rewards.clear()
 
 func showGameOver() -> void:
+	EventBus.game_over.emit();
 	pass;

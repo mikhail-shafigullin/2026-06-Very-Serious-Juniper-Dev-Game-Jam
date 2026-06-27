@@ -87,7 +87,7 @@ func finishEnemyTurn() -> void:
 	player.takeDamage(enemyTurnDamage)
 	EventBus.player_hp_changed.emit(player.currentHp, player.maxHp)
 	if player.currentHp <= 0:
-		finishBattle()
+		gameOver();
 	else:
 		player.inventory.tickAllCooldowns()
 		playerTurn()
@@ -95,3 +95,7 @@ func finishEnemyTurn() -> void:
 func finishBattle() -> void:
 	turnState = TurnState.IDLE
 	Global.gameCycle.finishBattle()
+
+
+func gameOver() -> void:
+	Global.gameCycle.showGameOver()

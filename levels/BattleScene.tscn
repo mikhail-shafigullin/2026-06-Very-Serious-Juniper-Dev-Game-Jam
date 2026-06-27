@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c26e58qn4b1cr" path="res://scenes/EnemiesContainer.tscn" id="11_1o8jg"]
 [ext_resource type="PackedScene" uid="uid://cq2yhwauh8abg" path="res://scenes/Inventory.tscn" id="11_ds3bl"]
 [ext_resource type="PackedScene" uid="uid://wj4tiy5s82v4" path="res://levels/DebugPanel.tscn" id="11_wk2re"]
+[ext_resource type="FontFile" uid="uid://cjp8bt3aul12y" path="res://assets/fonts/IBMPlexSerif-Medium.ttf" id="13_fbucy"]
 [ext_resource type="Theme" uid="uid://16pty85j0cwk" path="res://assets/themes/InventoryTheme.tres" id="14_bnn7c"]
 
 [node name="BattleScene" type="Node2D" unique_id=1814848257]
@@ -119,11 +120,83 @@ text = "Go further"
 position = Vector2(99, 26)
 
 [node name="RewardPanel" parent="Screeen" unique_id=1301627167 instance=ExtResource("10_dxm1b")]
+visible = false
 layout_mode = 1
 offset_left = -301.5
 offset_top = -273.5
 offset_right = 304.5
 offset_bottom = 160.5
+
+[node name="GameOverPanel" type="Control" parent="Screeen" unique_id=986654437]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+offset_right = 1068.0
+offset_bottom = 807.0
+
+[node name="ColorRect" type="ColorRect" parent="Screeen/GameOverPanel" unique_id=1432913320]
+layout_mode = 0
+offset_right = 1085.0
+offset_bottom = 1063.0
+color = Color(0.8837142, 0.19354782, 0, 1)
+
+[node name="Panel" type="Panel" parent="Screeen/GameOverPanel" unique_id=2070812423]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -125.125
+offset_right = 224.0
+offset_bottom = 125.125
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Screeen/GameOverPanel/Panel" unique_id=790566603]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.0
+offset_top = 40.5
+offset_right = 130.0
+offset_bottom = 98.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("13_fbucy")
+theme_override_font_sizes/font_size = 30
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Screeen/GameOverPanel/Panel" unique_id=523321409]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -85.0
+offset_top = 116.25
+offset_right = 97.0
+offset_bottom = 245.25
+grow_horizontal = 2
+theme_override_constants/separation = 10
+
+[node name="ResetGameButton" type="Button" parent="Screeen/GameOverPanel/Panel/VBoxContainer" unique_id=1886117938]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_fbucy")
+theme_override_font_sizes/font_size = 18
+text = "Reset Game"
+
+[node name="RestartFightButton" type="Button" parent="Screeen/GameOverPanel/Panel/VBoxContainer" unique_id=1187164047]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_fbucy")
+theme_override_font_sizes/font_size = 18
+text = "Restart Fight"
 
 [node name="ZheleznayaRamka" type="Sprite2D" parent="." unique_id=539880497]
 position = Vector2(770, 540)
