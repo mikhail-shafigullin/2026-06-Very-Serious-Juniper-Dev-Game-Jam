@@ -17,7 +17,7 @@ func _ready() -> void:
 	slotRightHand.toggled.connect(func(toggled_on: bool) -> void: _onSlotToggled(toggled_on, Global.gameCycle.player.inventory.rightHand))
 	slotBody.toggled.connect(func(toggled_on: bool) -> void: _onSlotToggled(toggled_on, Global.gameCycle.player.inventory.body))
 	slotLegs.toggled.connect(func(toggled_on: bool) -> void: _onSlotToggled(toggled_on, Global.gameCycle.player.inventory.legs))
-	skipTurnButton.pressed.connect(_onSkipTurnPressed);
+	skipTurnButton.pressed.connect(_onSkipTurnPressed)
 
 	EventBus.battle_started.connect(refresh)
 	EventBus.player_turn_started.connect(refresh)
@@ -72,3 +72,30 @@ func clearDescription():
 func disableUsedWeapon(_ignore):
 	refresh()
 	pass;
+
+var _lastHoveredSlot: InventorySlot = null
+
+func _process(_delta: float) -> void:
+	var mousePos := get_local_mouse_position()
+	var hovered := _getHoveredSlot(mousePos)
+	if hovered == _lastHoveredSlot:
+		return
+	_lastHoveredSlot = hovered
+	if hovered != null and hovered.item != null:
+		writeDescription(hovered)
+	else:
+		clearDescription()
+
+func _getHoveredSlot(mousePos: Vector2) -> InventorySlot:
+	var inv := Global.gameCycle.player.inventory
+	if slotHead.visible and slotHead.get_rect().has_point(mousePos):
+		return inv.head
+	if slotLeftHand.visible and slotLeftHand.get_rect().has_point(mousePos):
+		return inv.leftHand
+	if slotRightHand.visible and slotRightHand.get_rect().has_point(mousePos):
+		return inv.rightHand
+	if slotBody.visible and slotBody.get_rect().has_point(mousePos):
+		return inv.body
+	if slotLegs.visible and slotLegs.get_rect().has_point(mousePos):
+		return inv.legs
+	return null

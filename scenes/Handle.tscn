@@ -3,7 +3,21 @@
 [ext_resource type="Script" uid="uid://n877nb76j7sk" path="res://scenes/Handle.gd" id="1_handle"]
 [ext_resource type="Texture2D" uid="uid://d3yo8wx4i117m" path="res://assets/props/ruchka_1.png" id="1_njwdw"]
 [ext_resource type="Texture2D" uid="uid://drnglii1qf8lc" path="res://assets/props/ruchka_2.png" id="2_atkpx"]
+[ext_resource type="Shader" uid="uid://bqeugoqrb8tvp" path="res://scenes/highlight.gdshader" id="3_ro6b3"]
 [ext_resource type="Texture2D" uid="uid://lrnuf6pjnra5" path="res://assets/props/ruchka_3.png" id="3_uvdoo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ro6b3"]
+shader = ExtResource("3_ro6b3")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.09
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = 30.0
+shader_parameter/Distortion = 1.8
+shader_parameter/Speed = 1.5
+shader_parameter/Position = 0.0
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/Alpha = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ds3bl"]
 size = Vector2(36, 232)
@@ -13,8 +27,20 @@ script = ExtResource("1_handle")
 
 [node name="Ruchka1" type="Sprite2D" parent="." unique_id=1247173243]
 unique_name_in_owner = true
+clip_children = 2
 position = Vector2(25, 123)
 texture = ExtResource("1_njwdw")
+
+[node name="HandleHighlight" type="ColorRect" parent="Ruchka1" unique_id=2048290064]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_ro6b3")
+offset_left = -17.0
+offset_top = -115.0
+offset_right = 18.0
+offset_bottom = 118.0
+mouse_filter = 2
+color = Color(1, 0.4627451, 0.39215687, 0.6627451)
 
 [node name="Ruchka2" type="Sprite2D" parent="." unique_id=77232260]
 unique_name_in_owner = true

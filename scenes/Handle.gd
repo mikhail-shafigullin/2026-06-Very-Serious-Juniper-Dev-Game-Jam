@@ -13,6 +13,7 @@ const RETURN_STEP_INTERVAL = 0.03
 @onready var ruchka4: Sprite2D = %Ruchka4
 @onready var area2d: Area2D = %Area2D
 @onready var stepTimer: Timer = %StepTimer
+@onready var handleHighlight: ColorRect = %HandleHighlight;
 
 signal roll_triggered()
 signal handle_fully_pulled()
@@ -30,6 +31,7 @@ var dragStartY: float = 0.0
 func _ready() -> void:
 	area2d.input_event.connect(_onAreaInputEvent)
 	stepTimer.timeout.connect(_onStepTimer)
+	EventBus.player_weapon_chosen.connect(_on_player_weapon_chosen)
 
 func _onAreaInputEvent(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
@@ -105,3 +107,8 @@ func _updateVisuals() -> void:
 	ruchka2.visible = currentState == 2
 	ruchka3.visible = currentState == 3
 	ruchka4.visible = currentState == 4
+
+func _on_player_weapon_chosen(_slot):
+	handleHighlight.show();
+	await get_tree().create_timer(1.0).timeout
+	handleHighlight.hide();

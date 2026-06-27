@@ -4,6 +4,20 @@
 [ext_resource type="Script" uid="uid://brhmv8db2ndwj" path="res://scenes/SlotMachine.gd" id="1_gx68h"]
 [ext_resource type="Shader" uid="uid://yxobukbjsehw" path="res://src/shaders/slotmachine_speedline.gdshader" id="2_gx68h"]
 [ext_resource type="Texture2D" uid="uid://bjff8li8fw0o2" path="res://assets/props/slot_machin.png" id="3_fir66"]
+[ext_resource type="Shader" uid="uid://00bqfhr231ym" path="res://src/shaders/halo.gdshader" id="5_fir66"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gx68h"]
+shader = ExtResource("5_fir66")
+shader_parameter/shine_num = 10.0
+shader_parameter/rotation_speed = 1.0
+shader_parameter/light_magnitude = 2.0
+shader_parameter/filter_distence = 1.0
+shader_parameter/filter_magnitude = 1.0
+shader_parameter/filter_minv = 0.66000003135
+shader_parameter/cut_inner_radius = 0.06000000285
+shader_parameter/color = Color(0.48127353, 7.099286e-07, 2.4065375e-07, 1)
+shader_parameter/NOISE_speed = Vector2(0, 0)
+shader_parameter/NOISE_magnitude = 0.442000020995
 
 [sub_resource type="Gradient" id="Gradient_04r4t"]
 colors = PackedColorArray(0.49019608, 0.19215687, 0.18431373, 1, 0.49119216, 0.19132397, 0.1860401, 1)
@@ -60,7 +74,16 @@ vertical_alignment = 1
 
 [node name="Handle" parent="." unique_id=1520223739 instance=ExtResource("1_b6tw1")]
 unique_name_in_owner = true
+z_index = 1
 position = Vector2(334, 14)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1607859174]
+visible = false
+material = SubResource("ShaderMaterial_gx68h")
+offset_left = -101.0
+offset_top = -287.0
+offset_right = 781.5754
+offset_bottom = 539.0
 
 [node name="SlotMachineBox" type="Node2D" parent="." unique_id=1669601168]
 unique_name_in_owner = true
