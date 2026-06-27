@@ -3,12 +3,18 @@ extends ItemEffect
 
 var targetType: SlotObject.SlotType
 var bonusPerSymbol: int = 0
+var multiply: float;
+var additionalPoints: int;
 
-func _init(type: SlotObject.SlotType) -> void:
+func _init(type: SlotObject.SlotType, _multiply: float, _additionalPoints: int) -> void:
 	targetType = type
+	multiply = _multiply;
+	additionalPoints = _additionalPoints;
+	bonusPerSymbol = additionalPoints;
+
 
 func apply(result: SlotMachineResult, currentValue: int) -> int:
-	bonusPerSymbol += result.getCombinations().size()
+	bonusPerSymbol += result.getCombinations().size() * multiply
 
 	var symbolCount := 0
 	for column: Array in result.grid:
@@ -19,4 +25,4 @@ func apply(result: SlotMachineResult, currentValue: int) -> int:
 	return currentValue + symbolCount * bonusPerSymbol
 
 func reset() -> void:
-	bonusPerSymbol = 0
+	bonusPerSymbol = additionalPoints

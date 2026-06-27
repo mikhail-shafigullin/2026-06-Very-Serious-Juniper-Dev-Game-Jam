@@ -5,8 +5,9 @@ const BASE_COUNT = 3
 var targetType: SlotObject.SlotType
 var extraSymbols: int = BASE_COUNT
 
-func _init(type: SlotObject.SlotType) -> void:
+func _init(type: SlotObject.SlotType, _extraSymbols: int) -> void:
 	targetType = type
+	extraSymbols = _extraSymbols;
 
 func prepareController(controller: SlotMachineController) -> void:
 	for column: SlotMachineColumn in controller.columns:

@@ -21,6 +21,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3bb7y")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=947257407]
+layout_mode = 0
+offset_left = -239.0
+offset_top = -245.0
+offset_right = 829.0
+offset_bottom = 690.0
+color = Color(0, 0, 0, 0.3647059)
+
 [node name="Panel" type="Panel" parent="." unique_id=1519166487]
 layout_mode = 1
 anchors_preset = -1
@@ -94,6 +102,27 @@ offset_right = -85.0
 offset_bottom = -81.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2" unique_id=1745696376]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemNameLabel" type="Label" parent="Panel2/VBoxContainer" unique_id=613810251]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ItemDescriptionLabel" type="Label" parent="Panel2/VBoxContainer" unique_id=1343440174]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 3
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1959671292]
 layout_mode = 1

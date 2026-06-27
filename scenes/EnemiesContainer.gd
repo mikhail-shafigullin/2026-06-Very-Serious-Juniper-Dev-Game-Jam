@@ -141,6 +141,7 @@ func _triggerHitEffects() -> void:
 		_activeSprite.visible = false
 		_activeSprite.modulate.a = 1.0
 		_activeSprite = null
+		Global.gameCycle.showResults()
 
 func _onAttackEffectFinished() -> void:
 	playerAttackEffect.stop()

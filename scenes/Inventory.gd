@@ -41,7 +41,8 @@ func _refreshSlot(button: Button, slot: InventorySlot) -> void:
 	button.visible = true
 	button.disabled = slot.isOnCooldown()
 	button.button_pressed = false
-	skipTurnButton.disabled = false;
+	button.icon = slot.item.icon
+	skipTurnButton.disabled = false
 
 func _onSlotToggled(toggled_on: bool, slot: InventorySlot) -> void:
 	if Global.gameCycle.battle == null:

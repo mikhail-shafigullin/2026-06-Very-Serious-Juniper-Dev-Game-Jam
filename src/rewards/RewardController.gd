@@ -10,38 +10,54 @@ func generateRewards(location: LocationObject) -> void:
 
 func _createItemForLocation(locationType: LocationObject.LocationType) -> ItemObject:
 	var symbol := _randomSymbol()
-	var pool: Array[Callable] = _poolForLocation(locationType, symbol)
-	var creator: Callable = pool[randi() % pool.size()]
-	return creator.call()
+	var rarity := _randomRarity(locationType)
+	match _randomSlotType():
+		InventorySlot.InventorySlotType.HAND:
+			return SimpleHandWeapon.create(rarity)
+		InventorySlot.InventorySlotType.BODY:
+			return SymbolArmor.create(symbol, rarity)
+		InventorySlot.InventorySlotType.HEAD:
+			return SymbolHelmet.create(symbol, rarity)
+		_:
+			return SymbolLegs.create(symbol, rarity)
 
-func _randomSymbol() -> SlotObject.SlotType:
-	var allSymbols: Array = SlotObject.SlotType.values()
-	return allSymbols[randi() % allSymbols.size()]
+func _randomSlotType() -> InventorySlot.InventorySlotType:
+	var roll := randi() % 100
+	if roll < 20:
+		return InventorySlot.InventorySlotType.HAND
+	elif roll < 50:
+		return InventorySlot.InventorySlotType.BODY
+	elif roll < 80:
+		return InventorySlot.InventorySlotType.HEAD
+	else:
+		return InventorySlot.InventorySlotType.LEGS
 
-func _poolForLocation(locationType: LocationObject.LocationType, symbol: SlotObject.SlotType) -> Array[Callable]:
+func _randomRarity(locationType: LocationObject.LocationType) -> ItemObject.ItemRarity:
+	var roll := randi() % 100
 	match locationType:
 		LocationObject.LocationType.DUNGEON:
-			return [
-				func() -> ItemObject: return SimpleHandWeapon.create(),
-				func() -> ItemObject: return SymbolArmor.create(symbol),
-			]
+			return ItemObject.ItemRarity.RARE if roll < 20 else ItemObject.ItemRarity.COMMON
 		LocationObject.LocationType.LOST_TEMPLE:
-			return [
-				func() -> ItemObject: return SimpleHandWeapon.create(),
-				func() -> ItemObject: return SymbolArmor.create(symbol),
-				func() -> ItemObject: return SymbolHelmet.create(symbol),
-			]
-		LocationObject.LocationType.ASCENTION:
-			return [
-				func() -> ItemObject: return SimpleHandWeapon.create(),
-				func() -> ItemObject: return SymbolArmor.create(symbol),
-				func() -> ItemObject: return SymbolHelmet.create(symbol),
-				func() -> ItemObject: return SymbolLegs.create(symbol),
-			]
+			if roll < 30:
+				return ItemObject.ItemRarity.COMMON
+			elif roll < 80:
+				return ItemObject.ItemRarity.RARE
+			else:
+				return ItemObject.ItemRarity.EPIC
 		_:
-			return [
-				func() -> ItemObject: return SimpleHandWeapon.create(),
-				func() -> ItemObject: return SymbolArmor.create(symbol),
-				func() -> ItemObject: return SymbolHelmet.create(symbol),
-				func() -> ItemObject: return SymbolLegs.create(symbol),
-			]
+			if roll < 10:
+				return ItemObject.ItemRarity.COMMON
+			elif roll < 40:
+				return ItemObject.ItemRarity.RARE
+			else:
+				return ItemObject.ItemRarity.EPIC
+
+func _randomSymbol() -> SlotObject.SlotType:
+	var validSymbols: Array[SlotObject.SlotType] = [
+		SlotObject.SlotType.STAR,
+		SlotObject.SlotType.SEVEN,
+		SlotObject.SlotType.STRAWBERRY,
+		SlotObject.SlotType.CHEST,
+		SlotObject.SlotType.CHERRY,
+	]
+	return validSymbols[randi() % validSymbols.size()]

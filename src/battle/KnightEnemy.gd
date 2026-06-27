@@ -6,4 +6,4 @@ static func create() -> EnemyObject:
 		EnemyAction.new(),
 		EnemyDamageAction.new(15),
 	]
-	return EnemyObject.new("Knight", 100, actions)
+	return EnemyObject.new("Knight", 200, actions)

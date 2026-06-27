@@ -117,8 +117,11 @@ text = "Go further"
 position = Vector2(99, 26)
 
 [node name="RewardPanel" parent="Screeen" unique_id=1301627167 instance=ExtResource("10_dxm1b")]
-visible = false
 layout_mode = 1
+offset_left = -301.5
+offset_top = -273.5
+offset_right = 304.5
+offset_bottom = 160.5
 
 [node name="ZheleznayaRamka" type="Sprite2D" parent="." unique_id=539880497]
 position = Vector2(770, 540)

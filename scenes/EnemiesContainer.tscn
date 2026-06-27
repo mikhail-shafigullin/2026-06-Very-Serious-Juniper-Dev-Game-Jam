@@ -9,6 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://d3fl4o0ywxexh" path="res://assets/props/monstr_6.png" id="6_8hqsg"]
 [ext_resource type="Texture2D" uid="uid://ymrqf7467k2i" path="res://assets/pixelboy/cut_medium.png" id="8_4umsk"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4umsk"]
+bg_color = Color(0.3882353, 0.12156863, 0.05490196, 0.4745098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gx68h"]
+bg_color = Color(0.40625545, 0.013831394, 0, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_gg1kc"]
 atlas = ExtResource("8_4umsk")
 region = Rect2(0, 0, 44, 42)
@@ -138,6 +144,8 @@ offset_top = 148.0
 offset_right = 674.0
 offset_bottom = 165.99997
 rotation = 1.5707964
+theme_override_styles/background = SubResource("StyleBoxFlat_4umsk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gx68h")
 value = 100.0
 show_percentage = false
 

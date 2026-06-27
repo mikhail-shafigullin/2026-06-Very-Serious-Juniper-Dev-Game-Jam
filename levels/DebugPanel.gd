@@ -85,17 +85,17 @@ func _connectButtons() -> void:
 
 func _connectSignals() -> void:
 	EventBus.player_hp_changed.connect(_onPlayerHpChanged)
-	EventBus.enemy_hp_changed.connect(_onEnemyHpChanged)
-	EventBus.player_weapon_chosen.connect(_onPlayerWeaponChosen)
-	EventBus.player_slot_spun.connect(_onPlayerSlotSpun)
-	EventBus.enemy_slot_spun.connect(_onEnemySlotSpun)
-	EventBus.player_turn_result.connect(_onPlayerTurnResult)
-	EventBus.enemy_turn_result.connect(_onEnemyTurnResult)
-	EventBus.rewards_available.connect(_onRewardsAvailable)
-	EventBus.battle_started.connect(_onBattleStarted)
-	EventBus.battle_finished.connect(_onBattleFinished)
-	EventBus.player_turn_started.connect(_onPlayerTurnStarted)
-	EventBus.enemy_turn_started.connect(_onEnemyTurnStarted)
+	# EventBus.enemy_hp_changed.connect(_onEnemyHpChanged)
+	# EventBus.player_weapon_chosen.connect(_onPlayerWeaponChosen)
+	# EventBus.player_slot_spun.connect(_onPlayerSlotSpun)
+	# EventBus.enemy_slot_spun.connect(_onEnemySlotSpun)
+	# EventBus.player_turn_result.connect(_onPlayerTurnResult)
+	# EventBus.enemy_turn_result.connect(_onEnemyTurnResult)
+	# EventBus.rewards_available.connect(_onRewardsAvailable)
+	# EventBus.battle_started.connect(_onBattleStarted)
+	# EventBus.battle_finished.connect(_onBattleFinished)
+	# EventBus.player_turn_started.connect(_onPlayerTurnStarted)
+	# EventBus.enemy_turn_started.connect(_onEnemyTurnStarted)
 
 func _setUseButtonsDisabled(disabled: bool) -> void:
 	leftHandUseButton.disabled = disabled

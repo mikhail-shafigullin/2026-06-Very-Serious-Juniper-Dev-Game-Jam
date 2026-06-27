@@ -20,11 +20,11 @@ func initGame() -> void:
 	player = PlayerController.new();
 
 func initLocation() -> void:
-	player.inventory.leftHand.item = SimpleHandWeapon.create();
-	player.inventory.rightHand.item = SimpleHandWeapon.create();
-	player.inventory.head.item = SymbolHelmet.create(SlotObject.SlotType.STRAWBERRY)
-	player.inventory.legs.item = SymbolLegs.create(SlotObject.SlotType.STRAWBERRY)
-	player.inventory.body.item = SymbolArmor.create(SlotObject.SlotType.STRAWBERRY)
+	player.inventory.leftHand.item = SimpleHandWeapon.create(ItemObject.ItemRarity.COMMON);
+	# player.inventory.rightHand.item = SimpleHandWeapon.create();
+	# player.inventory.head.item = SymbolHelmet.create(SlotObject.SlotType.STRAWBERRY)
+	# player.inventory.legs.item = SymbolLegs.create(SlotObject.SlotType.STRAWBERRY)
+	# player.inventory.body.item = SymbolArmor.create(SlotObject.SlotType.STRAWBERRY)
 
 func startLocation() -> void:
 	currentLocation = locationFactory.next();
@@ -60,4 +60,3 @@ func claimRewards(itemIndex: int) -> void:
 
 func showGameOver() -> void:
 	pass;
-
