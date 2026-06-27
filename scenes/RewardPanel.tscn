@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://16pty85j0cwk" path="res://assets/themes/InventoryTheme.tres" id="2_rj4e6"]
 [ext_resource type="Texture2D" uid="uid://c0b6rh7m1yvf0" path="res://assets/props/sword_common.png" id="2_up5iq"]
 [ext_resource type="Texture2D" uid="uid://dee3ast4327ta" path="res://assets/props/dospeh_common.png" id="3_hl4sj"]
-[ext_resource type="FontFile" uid="uid://b0tk12dpqe31h" path="res://assets/fonts/PTSerif-Regular.ttf" id="6_4n7hv"]
+[ext_resource type="FontFile" uid="uid://cjp8bt3aul12y" path="res://assets/fonts/IBMPlexSerif-Medium.ttf" id="6_4n7hv"]
 
 [node name="RewardPanel" type="Control" unique_id=1301627167]
 layout_mode = 3
@@ -146,6 +146,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("6_4n7hv")
+theme_override_font_sizes/font_size = 18
 text = "Take it"
 
 [node name="IgnoreButton" type="Button" parent="HBoxContainer2" unique_id=702562552]
@@ -153,4 +154,5 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("6_4n7hv")
+theme_override_font_sizes/font_size = 18
 text = "Ignore"

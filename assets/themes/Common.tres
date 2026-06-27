@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://mnca2ve0ptov"]
 
-[ext_resource type="FontFile" uid="uid://b0tk12dpqe31h" path="res://assets/fonts/PTSerif-Regular.ttf" id="1_mqtar"]
+[ext_resource type="FontFile" uid="uid://cjp8bt3aul12y" path="res://assets/fonts/IBMPlexSerif-Medium.ttf" id="1_mqtar"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ds3bl"]
 bg_color = Color(0.49162644, 0.22687444, 0.20151976, 1)

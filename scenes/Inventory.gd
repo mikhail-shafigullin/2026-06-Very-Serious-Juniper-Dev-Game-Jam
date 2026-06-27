@@ -20,6 +20,7 @@ func _ready() -> void:
 	skipTurnButton.pressed.connect(_onSkipTurnPressed)
 
 	EventBus.battle_started.connect(refresh)
+	EventBus.battle_finished.connect(disableAllButtons)
 	EventBus.player_turn_started.connect(refresh)
 	EventBus.player_slot_spun.connect(disableUsedWeapon)
 
@@ -32,7 +33,16 @@ func refresh() -> void:
 	_refreshSlot(slotRightHand, inv.rightHand)
 	_refreshSlot(slotBody, inv.body)
 	_refreshSlot(slotLegs, inv.legs)
+	skipTurnButton.disabled = false;
 	clearDescription();
+
+func disableAllButtons():
+	slotHead.disabled = true;
+	slotLeftHand.disabled = true;
+	slotRightHand.disabled = true;
+	slotBody.disabled = true;
+	slotLegs.disabled = true;
+	skipTurnButton.disabled = true;
 
 func _refreshSlot(button: Button, slot: InventorySlot) -> void:
 	if slot.item == null:

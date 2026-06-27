@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://rbemfsm2w2yv" path="res://assets/props/monstr_5.png" id="5_ju3kh"]
 [ext_resource type="Texture2D" uid="uid://d3fl4o0ywxexh" path="res://assets/props/monstr_6.png" id="6_8hqsg"]
 [ext_resource type="Texture2D" uid="uid://ymrqf7467k2i" path="res://assets/pixelboy/cut_medium.png" id="8_4umsk"]
-[ext_resource type="FontFile" uid="uid://b0tk12dpqe31h" path="res://assets/fonts/PTSerif-Regular.ttf" id="8_gg1kc"]
+[ext_resource type="FontFile" uid="uid://cjp8bt3aul12y" path="res://assets/fonts/IBMPlexSerif-Medium.ttf" id="8_gg1kc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4umsk"]
 bg_color = Color(0.3882353, 0.12156863, 0.05490196, 0.4745098)
