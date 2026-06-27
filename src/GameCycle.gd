@@ -18,7 +18,8 @@ func initGame() -> void:
 	player = PlayerController.new();
 
 func initLocation() -> void:
-	player.inventory.leftHand.item = SimpleHandWeapon.create()
+	player.inventory.leftHand.item = SimpleHandWeapon.create();
+	player.inventory.head.item = StrawberryHelmet.create();
 
 func startLocation() -> void:
 	currentLocation = locationFactory.next();

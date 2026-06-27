@@ -4,13 +4,15 @@ extends Resource
 var enemyName: String
 var maxHp: int
 var currentHp: int
-var weapon: ItemObject
+var actions: Array[EnemyAction]
+var currentActionIndex: int = 0
+var strengthBonus: int = 0
 
-func _init(_name: String, _hp: int, _weapon: ItemObject) -> void:
+func _init(_name: String, _hp: int, _actions: Array[EnemyAction]) -> void:
 	enemyName = _name
 	maxHp = _hp
 	currentHp = _hp
-	weapon = _weapon
+	actions = _actions
 
 func takeDamage(amount: int) -> void:
 	currentHp -= amount
@@ -18,5 +20,7 @@ func takeDamage(amount: int) -> void:
 func isAlive() -> bool:
 	return currentHp > 0
 
-func buildController() -> SlotMachineController:
-	return SlotMachineController.fromItem(weapon)
+func getNextAction() -> EnemyAction:
+	var action := actions[currentActionIndex]
+	currentActionIndex = (currentActionIndex + 1) % actions.size()
+	return action

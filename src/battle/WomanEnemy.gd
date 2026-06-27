@@ -1,17 +1,9 @@
 class_name WomanEnemy
 
 static func create() -> EnemyObject:
-	var weapon := ItemObject.new()
-	weapon.itemName = "Claws"
-	weapon.slotType = InventorySlot.InventorySlotType.HAND
-
-	var allTypes: Array = SlotObject.SlotType.values()
-	for i in range(3):
-		var column := SlotMachineColumn.new()
-		for slotType in allTypes:
-			var slot := SlotObject.new()
-			slot.type = slotType
-			column.possibleSlots.append(slot)
-		weapon.columns.append(column)
-
-	return EnemyObject.new("Woman", 100, weapon)
+	var actions: Array[EnemyAction] = [
+		EnemyPlayerDebuffAction.new(20),
+		EnemyDamageAction.new(5),
+		EnemyDamageAction.new(5),
+	]
+	return EnemyObject.new("Woman", 100, actions)

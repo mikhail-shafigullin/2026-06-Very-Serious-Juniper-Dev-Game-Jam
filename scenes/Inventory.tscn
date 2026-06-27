@@ -135,3 +135,4 @@ grow_horizontal = 2
 text = "Description"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
