@@ -8,6 +8,7 @@ var extraSymbols: int = BASE_COUNT
 func _init(type: SlotObject.SlotType, _extraSymbols: int) -> void:
 	targetType = type
 	extraSymbols = _extraSymbols;
+	# EventBus.player_effect_updated.emit("SymbolAdd", targetType, str(extraSymbols))
 
 func prepareController(controller: SlotMachineController) -> void:
 	for column: SlotMachineColumn in controller.columns:
@@ -18,6 +19,7 @@ func prepareController(controller: SlotMachineController) -> void:
 
 func apply(result: SlotMachineResult, currentValue: int) -> int:
 	extraSymbols += result.getCombinations().size()
+	EventBus.player_effect_updated.emit("SymbolAdd", targetType, str(extraSymbols))
 	return currentValue
 
 func reset() -> void:

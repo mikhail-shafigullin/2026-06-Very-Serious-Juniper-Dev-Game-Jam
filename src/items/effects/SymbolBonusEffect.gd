@@ -11,6 +11,7 @@ func _init(type: SlotObject.SlotType, _multiply: float, _additionalPoints: int) 
 	multiply = _multiply;
 	additionalPoints = _additionalPoints;
 	bonusPerSymbol = additionalPoints;
+	# EventBus.player_effect_updated.emit("SymbolBonus", targetType, str(bonusPerSymbol))
 
 
 func apply(result: SlotMachineResult, currentValue: int) -> int:
@@ -22,6 +23,7 @@ func apply(result: SlotMachineResult, currentValue: int) -> int:
 			if slot.type == targetType:
 				symbolCount += 1
 
+	EventBus.player_effect_updated.emit("SymbolBonus", targetType, str(bonusPerSymbol))
 	return currentValue + symbolCount * bonusPerSymbol
 
 func reset() -> void:

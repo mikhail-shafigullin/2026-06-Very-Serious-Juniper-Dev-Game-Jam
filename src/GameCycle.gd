@@ -17,6 +17,7 @@ func _ready() -> void:
 	pass;
 
 func initGame() -> void:
+	
 	player = PlayerController.new();
 
 func initLocation() -> void:

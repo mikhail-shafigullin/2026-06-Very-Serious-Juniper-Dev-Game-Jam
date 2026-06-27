@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://bndg4ik20i8hw"]
+
+[ext_resource type="Texture2D" uid="uid://dd2jn0y5r4xik" path="res://assets/icons/shield.png" id="1_esegb"]
+[ext_resource type="Script" uid="uid://d1u777lcvldso" path="res://scenes/StatusPanel.gd" id="1_p3b6d"]
+[ext_resource type="FontFile" uid="uid://cjp8bt3aul12y" path="res://assets/fonts/IBMPlexSerif-Medium.ttf" id="2_p3b6d"]
+[ext_resource type="Texture2D" uid="uid://yxphit6hu08h" path="res://assets/props/semerka.png" id="3_yknoi"]
+
+[node name="StatusPanel" type="Control" unique_id=29657956]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 715.0
+offset_top = 906.0
+offset_right = 1446.0
+offset_bottom = 1031.0
+script = ExtResource("1_p3b6d")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=974712303]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="ArmorColumn" type="VBoxContainer" parent="HBoxContainer" unique_id=137608189]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ArmorColumn" unique_id=490368271]
+modulate = Color(0.6901961, 0, 0, 1)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_esegb")
+expand_mode = 2
+
+[node name="ArmorLabel" type="Label" parent="HBoxContainer/ArmorColumn" unique_id=1725670376]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p3b6d")
+theme_override_font_sizes/font_size = 18
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SlotDamageColumn" type="VBoxContainer" parent="HBoxContainer" unique_id=2014588852]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SlotDamageTexture" type="TextureRect" parent="HBoxContainer/SlotDamageColumn" unique_id=1006904804]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("3_yknoi")
+stretch_mode = 3
+
+[node name="SlotDamageLabel" type="Label" parent="HBoxContainer/SlotDamageColumn" unique_id=1608221673]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p3b6d")
+theme_override_font_sizes/font_size = 18
+text = "+1dmg"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SlotAmountColumn" type="VBoxContainer" parent="HBoxContainer" unique_id=96077837]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SlotAmountTexture" type="TextureRect" parent="HBoxContainer/SlotAmountColumn" unique_id=1865430398]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("3_yknoi")
+stretch_mode = 3
+
+[node name="SlotAmountLabel" type="Label" parent="HBoxContainer/SlotAmountColumn" unique_id=1217558522]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p3b6d")
+theme_override_font_sizes/font_size = 18
+text = "+1slot"
+horizontal_alignment = 1
+vertical_alignment = 1

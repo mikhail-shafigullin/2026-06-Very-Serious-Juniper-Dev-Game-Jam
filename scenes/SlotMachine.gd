@@ -99,13 +99,15 @@ func _on_player_slot_spun(result: SlotMachineResult) -> void:
 
 	rollTween.chain().tween_callback(func():
 		rollEffectSprite.hide()
-		scoreLabel.show();
+		scoreLabel.show()
 		_updateIsRollPossible()
 	)
 
-func _on_player_turn_result(total: int):
-	scoreLabel.text = str(total);
-	pass;
+func _on_player_turn_result(total: int, slot: InventorySlot) -> void:
+	if slot.type != InventorySlot.InventorySlotType.HEAD and slot.type != InventorySlot.InventorySlotType.LEGS:
+		scoreLabel.text = str(total)
+	else:
+		scoreLabel.text = ""
 
 func _startShake() -> void:
 	if shakeTween:

@@ -59,7 +59,7 @@ func usePlayerItem() -> void:
 	var damage := controller.calculateEffect(result)
 	slot.applyCooldown()
 	EventBus.player_slot_spun.emit(result)
-	EventBus.player_turn_result.emit(damage)
+	EventBus.player_turn_result.emit(damage, slot)
 	if slot.type == InventorySlot.InventorySlotType.HAND:
 		playerTurnDamage += damage
 		currentBattle.enemy.takeDamage(playerTurnDamage)

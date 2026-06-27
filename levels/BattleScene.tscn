@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://wj4tiy5s82v4" path="res://levels/DebugPanel.tscn" id="11_wk2re"]
 [ext_resource type="FontFile" uid="uid://cjp8bt3aul12y" path="res://assets/fonts/IBMPlexSerif-Medium.ttf" id="13_fbucy"]
 [ext_resource type="Theme" uid="uid://16pty85j0cwk" path="res://assets/themes/InventoryTheme.tres" id="14_bnn7c"]
+[ext_resource type="PackedScene" uid="uid://bndg4ik20i8hw" path="res://scenes/StatusPanel.tscn" id="19_cgn7e"]
 
 [node name="BattleScene" type="Node2D" unique_id=1814848257]
 script = ExtResource("1_ds3bl")
@@ -238,5 +239,7 @@ offset_top = 84.0
 offset_right = 192.0
 offset_bottom = 107.0
 text = "Thank you for playing"
+
+[node name="StatusPanel" parent="." unique_id=29657956 instance=ExtResource("19_cgn7e")]
 
 [connection signal="pressed" from="Screeen/Location/NextLocationButton" to="." method="_on_next_location_button_pressed"]

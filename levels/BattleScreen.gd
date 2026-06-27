@@ -26,6 +26,7 @@ func _ready() -> void:
 	EventBus.player_hp_changed.connect(_onPlayerHpChanged)
 	EventBus.game_end.connect(func(): creditsControl.show())
 	EventBus.game_over.connect(_gameOver)
+	EventBus.player_turn_result.connect(_updateStatus)
 	resetGameButton.pressed.connect(_on_reset_game_button_pressed)
 
 	Global.gameCycle.initGame();
@@ -106,3 +107,6 @@ func _gameOver() -> void:
 	gameOverPanel.show()
 	var panelTween := create_tween()
 	panelTween.tween_property(gameOverPanel, "modulate:a", 1.0, 0.5)
+
+func _updateStatus(total: int, slot: InventorySlot):
+	pass;

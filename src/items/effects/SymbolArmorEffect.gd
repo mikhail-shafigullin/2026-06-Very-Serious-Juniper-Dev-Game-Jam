@@ -14,4 +14,6 @@ func apply(result: SlotMachineResult, _currentValue: int) -> int:
 		for slot: SlotObject in column:
 			if slot.type == targetType:
 				symbolCount += 1 * multiply
-	return int(symbolCount * result.getTotalMultiplier())
+	var armor = int(symbolCount * result.getTotalMultiplier())
+	EventBus.player_effect_updated.emit("Armor", SlotObject.SlotType.CHERRY, str(armor))
+	return armor;

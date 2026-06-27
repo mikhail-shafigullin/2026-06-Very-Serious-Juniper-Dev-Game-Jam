@@ -18,8 +18,10 @@ func _ready() -> void:
 			signalObject.connect(logEvent.bind(sigName))
 		elif argCount == 1:
 			signalObject.connect(logEventWithArg.bind(sigName))
-		else:
+		elif argCount == 2:
 			signalObject.connect(logEventWithTwoArgs.bind(sigName))
+		else:
+			pass;
 
 
 func logEvent(eventName: String) -> void:

@@ -63,6 +63,7 @@ func _hideAllEnemies() -> void:
 	enemySprite6.visible = false
 
 func _on_battle_started() -> void:
+	_updateActionIntent(0)
 	_hideAllEnemies()
 	var enemy := Global.gameCycle.battle.currentBattle.enemy
 	var spriteIndex: int = ENEMY_SPRITE_MAP.get(enemy.enemyName, -1)
@@ -111,9 +112,10 @@ func _onBattleFinished() -> void:
 		_tween.kill()
 		_tween = null
 
-func onPlayerAttack(damage: int) -> void:
-	_pendingDamage = damage
-	timer.start()
+func onPlayerAttack(damage: int, slot: InventorySlot) -> void:
+	if slot.type != InventorySlot.InventorySlotType.HEAD and slot.type != InventorySlot.InventorySlotType.LEGS and slot.type != InventorySlot.InventorySlotType.BODY:
+		_pendingDamage = damage
+		timer.start()
 
 func _onTimerTimeout() -> void:
 	playerAttackEffect.show()
