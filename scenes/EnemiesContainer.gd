@@ -63,8 +63,9 @@ func _on_battle_started() -> void:
 	var enemy := Global.gameCycle.battle.currentBattle.enemy
 	var spriteIndex: int = ENEMY_SPRITE_MAP.get(enemy.enemyName, -1)
 	_showEnemy(spriteIndex)
-	enemyHealthBar.max_value = _pendingHpMax
-	enemyHealthBar.value = _pendingHpCurrent
+	enemyHealthBar.max_value = enemy.maxHp
+	enemyHealthBar.value = enemy.maxHp
+	healthLabel.text = str(enemy.maxHp) + "/" + str(enemy.maxHp);
 	enemyHealthBar.show()
 
 func _showEnemy(index: int) -> void:

@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bpss1kp054jo0" path="res://scenes/SlotMachine.tscn" id="7_wk2re"]
 [ext_resource type="Texture2D" uid="uid://ckycd2ou5n8xp" path="res://assets/props/fon_4.png" id="8_1o8jg"]
 [ext_resource type="PackedScene" uid="uid://4gp637bp22gf" path="res://scenes/RewardPanel.tscn" id="10_dxm1b"]
+[ext_resource type="FontFile" uid="uid://b0tk12dpqe31h" path="res://assets/fonts/PTSerif-Regular.ttf" id="10_y5077"]
 [ext_resource type="PackedScene" uid="uid://c26e58qn4b1cr" path="res://scenes/EnemiesContainer.tscn" id="11_1o8jg"]
 [ext_resource type="PackedScene" uid="uid://cq2yhwauh8abg" path="res://scenes/Inventory.tscn" id="11_ds3bl"]
 [ext_resource type="PackedScene" uid="uid://wj4tiy5s82v4" path="res://levels/DebugPanel.tscn" id="11_wk2re"]
@@ -110,6 +111,7 @@ offset_top = 720.0
 offset_right = 1054.0
 offset_bottom = 810.0
 theme = ExtResource("14_bnn7c")
+theme_override_fonts/font = ExtResource("10_y5077")
 theme_override_font_sizes/font_size = 40
 text = "Go further"
 

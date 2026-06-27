@@ -1,5 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://mnca2ve0ptov"]
 
+[ext_resource type="FontFile" uid="uid://b0tk12dpqe31h" path="res://assets/fonts/PTSerif-Regular.ttf" id="1_mqtar"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ds3bl"]
 bg_color = Color(0.49162644, 0.22687444, 0.20151976, 1)
 
@@ -15,6 +17,7 @@ border_color = Color(0.40516317, 0.09596684, 0.073887356, 1)
 bg_color = Color(0.26766253, 0.08986596, 0.073045336, 1)
 
 [resource]
+Button/fonts/font = ExtResource("1_mqtar")
 Button/styles/hover = SubResource("StyleBoxFlat_ds3bl")
 Button/styles/normal = SubResource("StyleBoxFlat_hnffh")
 Button/styles/pressed = SubResource("StyleBoxFlat_rx0hn")
