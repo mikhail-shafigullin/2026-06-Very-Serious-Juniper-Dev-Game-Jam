@@ -9,6 +9,7 @@ extends Control
 @onready var skipTurnButton: Button = %SkipTurnButton;
 @onready var weaponNameLabel: Label = %WeaponNameLabel;
 @onready var weaponNameDescription: Label = %WeaponNameDescription;
+@onready var weaponNameCurrentBonusValue: Label = %WeaponNameCurrentBonusValue;
 
 func _ready() -> void:
 	slotHead.toggled.connect(func(toggled_on: bool) -> void: _onSlotToggled(toggled_on, Global.gameCycle.player.inventory.head))

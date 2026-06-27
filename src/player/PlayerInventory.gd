@@ -18,6 +18,20 @@ func tickAllCooldowns() -> void:
 	for slot: InventorySlot in [head, body, leftHand, rightHand, legs]:
 		slot.tickCooldown()
 
+func slotForItem(item: ItemObject) -> InventorySlot:
+	match item.slotType:
+		InventorySlot.InventorySlotType.HEAD:
+			return head
+		InventorySlot.InventorySlotType.BODY:
+			return body
+		InventorySlot.InventorySlotType.LEGS:
+			return legs
+		InventorySlot.InventorySlotType.HAND:
+			if leftHand.item == null:
+				return leftHand
+			return rightHand
+	return rightHand
+
 func refresh():
 	if(head): head.currentCooldown = 0;
 	if(body): body.currentCooldown = 0;

@@ -1,12 +1,13 @@
-class_name StrawberryHelmet
+class_name SymbolHelmet
 
-static func create() -> ItemObject:
+static func create(targetType: SlotObject.SlotType) -> ItemObject:
 	var item := ItemObject.new()
-	item.itemName = "Berry Crown"
-	item.itemDescription = "Each combination increases damage from all strawberries"
+	var typeName: String = SlotObject.SlotType.keys()[int(targetType)].capitalize()
+	item.itemName = typeName + " Crown"
+	item.itemDescription = "Each combination increases damage from all " + typeName.to_lower() + "s"
 	item.slotType = InventorySlot.InventorySlotType.HEAD
 	item.cooldown = 2
-	item.effects.append(StrawberryBonusEffect.new())
+	item.effects.append(SymbolBonusEffect.new(targetType))
 
 	var allTypes: Array = SlotObject.SlotType.values()
 	for i in range(3):

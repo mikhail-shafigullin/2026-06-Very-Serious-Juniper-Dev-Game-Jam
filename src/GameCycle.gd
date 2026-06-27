@@ -5,6 +5,7 @@ var player: PlayerController;
 var battle: BattleCycle;
 var locationFactory: LocationFactory
 var currentLocation: LocationObject
+var rewardController: RewardController
 
 func _init() -> void:
 	pass;
@@ -12,6 +13,7 @@ func _init() -> void:
 func _ready() -> void:
 	Global.gameCycle = self;
 	locationFactory = LocationFactory.new()
+	rewardController = RewardController.new()
 	pass;
 
 func initGame() -> void:
@@ -19,7 +21,10 @@ func initGame() -> void:
 
 func initLocation() -> void:
 	player.inventory.leftHand.item = SimpleHandWeapon.create();
-	player.inventory.head.item = StrawberryHelmet.create();
+	player.inventory.rightHand.item = SimpleHandWeapon.create();
+	player.inventory.head.item = SymbolHelmet.create(SlotObject.SlotType.STRAWBERRY)
+	player.inventory.legs.item = SymbolLegs.create(SlotObject.SlotType.STRAWBERRY)
+	player.inventory.body.item = SymbolArmor.create(SlotObject.SlotType.STRAWBERRY)
 
 func startLocation() -> void:
 	currentLocation = locationFactory.next();
@@ -40,13 +45,18 @@ func finishBattle() -> void:
 	EventBus.battle_finished.emit()
 
 func finishLocation() -> void:
+	rewardController.rewards.clear()
 	EventBus.location_finished.emit();
 
 func showResults() -> void:
-	pass;
+	rewardController.generateRewards(currentLocation)
+	EventBus.rewards_available.emit(rewardController.rewards)
 
-func claimRewards(_item_index: int) -> void:
-	pass;
+func claimRewards(itemIndex: int) -> void:
+	var item: ItemObject = rewardController.rewards[itemIndex]
+	var slot: InventorySlot = player.inventory.slotForItem(item)
+	slot.item = item
+	rewardController.rewards.clear()
 
 func showGameOver() -> void:
 	pass;

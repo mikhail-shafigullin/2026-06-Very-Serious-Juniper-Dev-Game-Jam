@@ -8,9 +8,14 @@ var activeEffects: Array[ItemEffect] = []
 
 static func fromItem(mainItem: ItemObject, extraEffects: Array[ItemEffect] = []) -> SlotMachineController:
 	var c := SlotMachineController.new()
-	c.columns = mainItem.columns.duplicate()
+	for col: SlotMachineColumn in mainItem.columns:
+		var copy := SlotMachineColumn.new()
+		copy.possibleSlots = col.possibleSlots.duplicate()
+		c.columns.append(copy)
 	c.activeEffects = mainItem.effects.duplicate()
 	c.activeEffects.append_array(extraEffects)
+	for effect: ItemEffect in c.activeEffects:
+		effect.prepareController(c)
 	return c
 
 func spin() -> SlotMachineResult:
@@ -26,7 +31,8 @@ func calculateEffect(result: SlotMachineResult) -> int:
 	var value := 0
 	for column: Array in result.grid:
 		for slot: SlotObject in column:
-			value += 1
+			if slot.type != SlotObject.SlotType.CROSS:
+				value += 1
 
 	for combo: SlotMachineCombination in result.getCombinations():
 		value = int(value * combo.getMultiplier())

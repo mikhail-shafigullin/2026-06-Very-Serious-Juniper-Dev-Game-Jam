@@ -23,6 +23,9 @@ func playerTurn() -> void:
 	turnState = TurnState.PLAYER_TURN
 	playerTurnDamage = 0
 	chosenSlot = null
+	var player := Global.gameCycle.player
+	player.currentArmor = 0
+	EventBus.player_armor_changed.emit(0)
 	EventBus.player_turn_started.emit()
 
 func chooseWeapon(slot: InventorySlot) -> void:
@@ -48,7 +51,7 @@ func usePlayerItem() -> void:
 	chosenSlot = null
 	var player := Global.gameCycle.player
 	var extraEffects: Array[ItemEffect] = []
-	for passiveSlot: InventorySlot in [player.inventory.head, player.inventory.body, player.inventory.legs]:
+	for passiveSlot: InventorySlot in [player.inventory.head, player.inventory.legs]:
 		if passiveSlot.item != null and passiveSlot != slot:
 			extraEffects.append_array(passiveSlot.item.effects)
 	var controller := SlotMachineController.fromItem(slot.item, extraEffects)
@@ -63,6 +66,9 @@ func usePlayerItem() -> void:
 		EventBus.enemy_hp_changed.emit(currentBattle.enemy.currentHp, currentBattle.enemy.maxHp)
 		if not currentBattle.enemy.isAlive():
 			finishBattle()
+	elif slot.type == InventorySlot.InventorySlotType.BODY:
+		player.currentArmor += damage
+		EventBus.player_armor_changed.emit(player.currentArmor)
 
 func finishPlayerTurn() -> void:
 	enemyTurn()

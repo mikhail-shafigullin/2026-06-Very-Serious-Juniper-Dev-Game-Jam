@@ -10,6 +10,7 @@ signal battle_finished()
 
 signal player_turn_started()
 signal player_hp_changed(current_hp: int, max_hp: int)
+signal player_armor_changed(current_armor: int)
 signal player_weapon_chosen(slot: InventorySlot)
 signal player_slot_spun(result: SlotMachineResult)
 signal player_turn_result(total: int)

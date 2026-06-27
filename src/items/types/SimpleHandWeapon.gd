@@ -18,6 +18,4 @@ static func create() -> ItemObject:
 				column.possibleSlots.append(slot)
 		item.columns.append(column)
 		column.possibleSlots.shuffle()
-	item.effects.append(WeaponDamageEffect.new())
-
 	return item
