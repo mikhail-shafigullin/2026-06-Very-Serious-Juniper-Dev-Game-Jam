@@ -15,6 +15,7 @@ func _ready() -> void:
 	pass;
 
 func _playerEffectUpdated(effectStr: String, slotType: SlotObject.SlotType, strValue: String):
+	await get_tree().create_timer(1.3).timeout
 	if(effectStr == "Armor"):
 		armorColumn.show();
 		armorLabel.text = strValue;
